@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>HS</Authors>
+    <Description>HS.Microcore.Ninject</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Ninject.Extensions.Conventions" Version="3.3.0" />
+    <PackageReference Include="Ninject.Extensions.Factory" Version="3.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HS.Microcore.Configuration\HS.Microcore.Configuration.csproj" />
+    <ProjectReference Include="..\HS.Microcore.Hosting\HS.Microcore.Hosting.csproj" />
+    <ProjectReference Include="..\HS.Microcore.Interfaces\HS.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\HS.Microcore.ServiceDiscovery\HS.Microcore.ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\HS.Microcore.ServiceProxy\HS.Microcore.ServiceProxy.csproj" />
+    <ProjectReference Include="..\HS.Microcore.SharedLogic\HS.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\HS.ServiceContract\HS.ServiceContract.csproj" />
+  </ItemGroup>
+
+</Project>

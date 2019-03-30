@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>1.0.4</Version>
+    <Authors>HS</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DataAnnotationsValidator.NETCore" Version="1.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HS.Microcore.Interfaces\HS.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\HS.Microcore.SharedLogic\HS.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\HS.ServiceContract\HS.ServiceContract.csproj" />
+  </ItemGroup>
+
+</Project>
