@@ -1,2 +1,2 @@
 # microcore
-A port of microdot framework
+A port of https://github.com/gigya/microdot framework
