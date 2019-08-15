@@ -1,5 +1,5 @@
 #region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -28,17 +28,15 @@ using HS.Common.Contracts.HttpService;
 namespace HS.Microcore.Hosting.HttpService
 {
 	/// <summary>
-	/// A representation of a service method which contains the method to be invoked, and in Orleans, the grain interface type too.
+	/// A representation of a service method which contains the method to be invoked, the grain interface type too.
 	/// </summary>
     public class ServiceMethod
     {
-		/// <summary>The type of the grain interface, used in Orleans to create a grain reference (not used elsewhere)
-		/// In Orleans, it <b>MUST</b> be the grain interface (e.g. IDemoGrain).</summary>
+		/// <summary>The type of the grain interface to create a grain reference.
 		public Type GrainInterfaceType { get;  }
 
         /// <summary>
 		/// The method which should be activated by IActivator. It <b>MUST</b> be a method on a type decorated by <see cref="HttpServiceAttribute" />.
-		/// In Orleans, this is the service interface (e.g. IDemoService).
         /// </summary>
         public MethodInfo ServiceInterfaceMethod { get; }
 

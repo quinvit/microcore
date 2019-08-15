@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -31,7 +31,7 @@ namespace HS.Microcore.SharedLogic.Events
     {
         private const string SPAN_ID_KEY = "SpanID";
         private const string PARENT_SPAN_ID_KEY = "ParentSpanID";
-        private const string ORLEANS_REQUEST_CONTEXT_KEY = "#ORL_RC";
+        private const string REQUEST_CONTEXT_KEY = "#RC";
         private const string REQUEST_ID_KEY = "ServiceTraceRequestID";
         private const string OVERRIDES_KEY = "Overrides";
         private const string SPAN_START_TIME = "SpanStartTime";
@@ -150,7 +150,6 @@ namespace HS.Microcore.SharedLogic.Events
             context[key] = value;
         }
 
-        // Implemented better in next Micrdot using Orleans 1.5
         private static void CloneAndSetValue(string key, object value)
         {
             var context = GetContextData();
@@ -160,7 +159,7 @@ namespace HS.Microcore.SharedLogic.Events
 
             var cloned = new Dictionary<string, object>(context);
             cloned[key] = value;
-            CallContext.SetData(ORLEANS_REQUEST_CONTEXT_KEY, cloned);
+            CallContext.SetData(REQUEST_CONTEXT_KEY, cloned);
         }
 
         private static T TryGetValue<T>(string key) where T : class
@@ -183,14 +182,14 @@ namespace HS.Microcore.SharedLogic.Events
         {
             if (GetContextData() == null)
             {
-                CallContext.SetData(ORLEANS_REQUEST_CONTEXT_KEY, new Dictionary<string, object>());
+                CallContext.SetData(REQUEST_CONTEXT_KEY, new Dictionary<string, object>());
             }
         }
 
 
         private static Dictionary<string, object> GetContextData()
         {
-            return (Dictionary<string, object>)CallContext.GetData(ORLEANS_REQUEST_CONTEXT_KEY);
+            return (Dictionary<string, object>)CallContext.GetData(REQUEST_CONTEXT_KEY);
         }
     }
 }

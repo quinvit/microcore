@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -60,7 +60,7 @@ namespace HS.Common.Contracts.Exceptions
 	/// Exception that correctly inherit as described above, have all their public properties that have a setter
 	/// (including a non-public setter) serialized and deserialized automatically, in addition to tags (fields are not
 	/// serialized). The values of those properties must be marked with a SerializableAttribute since the
-	/// serialization is sometimes performed by <see cref="BinaryFormatter"/> (within Orleans). Also, the values of
+	/// serialization is sometimes performed by <see cref="BinaryFormatter"/>. Also, the values of
 	/// these properties should be immutable.
 	/// 
 	/// If a getter of a property returns null or throws an exception during serialization, it will not be serialized.

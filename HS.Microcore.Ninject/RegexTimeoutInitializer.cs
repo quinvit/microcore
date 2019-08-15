@@ -16,7 +16,7 @@ namespace HS.Microcore.Ninject
             {
                 regexDefaultMachTimeOutMs = 10000;
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 

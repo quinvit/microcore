@@ -6,11 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HS.Microcore.Logging.Serilog" Version="1.0.4" />
     <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\HS.Microcore.Logging.Serilog\HS.Microcore.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\HS.Microcore.ServiceDiscovery\HS.Microcore.ServiceDiscovery.csproj" />
     <ProjectReference Include="..\CalculatorService.Interface\CalculatorService.Interface.csproj" />
   </ItemGroup>
 

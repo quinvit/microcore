@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -26,8 +26,7 @@ using System.Collections.Generic;
 namespace HS.Microcore.Hosting.HttpService
 {
 	/// <summary>
-	/// Mapping between service interfaces to grain interfaces. Used in Orleans for additional type information (for creating grain references).
-	/// The map is an identity map outside orleans.
+	/// Mapping between service interfaces to grain interfaces.
 	/// </summary>
     public interface IServiceInterfaceMapper
     {
@@ -43,7 +42,7 @@ namespace HS.Microcore.Hosting.HttpService
 
 
 	    /// <summary>
-		/// A method that maps a service interface to its corresponding grain interface. Used only in Orleans.
+		/// A method that maps a service interface to its corresponding grain interface.
 		/// </summary>
 		/// <param name="serviceInterface">The service interface to map.</param>
 		/// <returns>The grain interface for the provided service interface, or the provideded parameter (identity) when not used in Orelans.</returns>

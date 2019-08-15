@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -83,7 +83,7 @@ namespace HS.Microcore.ServiceDiscovery.Rewrite
 
             _reachabilityCheck = reachabilityCheck;
             GetConfig = discoveryConfigFactory;
-            // Must be run in Task.Run() because of incorrect Orleans scheduling
+
             _initTask = Task.Run(() => ReloadRemoteHost(discoveryConfigFactory()));
             _configBlockLink = configListener.LinkTo(new ActionBlock<DiscoveryConfig>(ReloadRemoteHost));
 

@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -24,8 +24,6 @@ namespace HS.Microcore.SharedLogic
     public enum PortOffsets
     {
         Http = 0,
-        SiloGateway = 1, // TODO: Once everyone is using the ServiceProxy, don't open the silo gateway port
-        SiloNetworking = 2,
         Metrics = 3
     }
 }

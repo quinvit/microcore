@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -36,7 +36,7 @@ using Ninject.Syntax;
 namespace HS.Microcore.Ninject.Host
 {
     /// <summary>
-    /// Base class for all non-Orleans services that use Ninject. Override <see cref="Configure"/> to configure your own
+    /// Base class for all services that use Ninject. Override <see cref="Configure"/> to configure your own
     /// bindings and choose which infrastructure features you'd like to enable. 
     /// </summary>
     /// <typeparam name="TInterface">The interface of the service.</typeparam>
@@ -138,9 +138,8 @@ namespace HS.Microcore.Ninject.Host
         }
 
         /// <summary>
-        /// When overridden, allows a service to configure its Ninject bindings and infrastructure features. Called
-        /// after infrastructure was binded but before the silo is started. You must bind an implementation to the
-        /// interface defined by <see cref="TInterface"/>.
+        /// When overridden, allows a service to configure its Ninject bindings and infrastructure features. 
+        /// You must bind an implementation to the interface defined by <see cref="TInterface"/>.
         /// </summary>
         /// <param name="kernel">A <see cref="IKernel"/> already configured with infrastructure bindings.</param>
         /// <param name="commonConfig">An <see cref="BaseCommonConfig"/> that allows you to select which
@@ -149,16 +148,11 @@ namespace HS.Microcore.Ninject.Host
 
 
         /// <summary>
-        /// Called when the service stops. This methods stops the silo. In most scenarios, you shouldn't override this
+        /// Called when the service stops.
         /// method.
         /// </summary>        
         protected override void OnStop()
         {
-            if (Arguments.ServiceDrainTimeSec.HasValue)
-            {
-                Kernel.Get<ServiceDrainController>().StartDrain();
-                Thread.Sleep(Arguments.ServiceDrainTimeSec.Value * 1000);
-            }
             Dispose();
         }
 

@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -29,7 +29,7 @@ namespace HS.Common.Contracts.HttpService
 	{
         /// <summary>
         /// This is the port number that the service will listen to for incoming HTTP requests. Other ports (used for
-        /// Orleans, Metrics.Net, etc) are opened at sequential numbers from this base offset. 
+        /// AppMetrics.Net, etc) are opened at sequential numbers from this base offset. 
         /// </summary>
 		public int BasePort { get; set; }
 

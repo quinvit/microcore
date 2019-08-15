@@ -22,8 +22,6 @@ namespace HS.Microcore.SharedLogic.Configurations
         public Toggle   DropMicrocoreRequestsBySpanTime          { get; set; } = Toggle.Disabled;
         public TimeSpan DropMicrocoreRequestsOlderThanSpanTimeBy { get; set; } = TimeSpan.FromSeconds(5);
 
-        public Toggle   DropOrleansRequestsBySpanTime           { get; set; } = Toggle.Disabled;
-        public TimeSpan DropOrleansRequestsOlderThanSpanTimeBy  { get; set; } = TimeSpan.FromSeconds(5);
     }
 
 }

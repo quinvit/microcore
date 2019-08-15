@@ -1,5 +1,5 @@
 #region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -45,12 +45,6 @@ namespace HS.Microcore.Hosting.HttpService
         public int MetricsPort { get; }
 
         public int HttpPort { get; }
-
-        public int SiloGatewayPort { get; }
-
-        public int SiloNetworkingPort { get; }
-
-        public int SiloNetworkingPortOfPrimaryNode { get; }
 
         public Dictionary<Type, string> ServiceNames { get; }
 
@@ -108,9 +102,6 @@ namespace HS.Microcore.Hosting.HttpService
 
                 HttpPort = basePort + (int)PortOffsets.Http;
                 MetricsPort = basePort + (int)PortOffsets.Metrics;
-                SiloGatewayPort = basePort + (int)PortOffsets.SiloGateway;
-                SiloNetworkingPort = basePort + (int)PortOffsets.SiloNetworking;
-                SiloNetworkingPortOfPrimaryNode = interfacePorts.First().BasePortWithoutOverrides + (int)PortOffsets.SiloNetworking;
             }
             else
             {
@@ -131,9 +122,6 @@ namespace HS.Microcore.Hosting.HttpService
 
                 HttpPort = config.PortAllocation.GetPort(slotNumber, PortOffsets.Http).Value;
                 MetricsPort = config.PortAllocation.GetPort(slotNumber, PortOffsets.Metrics).Value;
-                SiloGatewayPort = config.PortAllocation.GetPort(slotNumber, PortOffsets.SiloGateway).Value;
-                SiloNetworkingPort = config.PortAllocation.GetPort(slotNumber, PortOffsets.SiloNetworking).Value;
-                SiloNetworkingPortOfPrimaryNode = config.PortAllocation.GetPort(serviceConfig.DefaultSlotNumber, PortOffsets.SiloNetworking).Value;
             }
 
             foreach (var method in _serviceMethodResolver.GrainMethods)

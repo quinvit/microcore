@@ -1,5 +1,5 @@
 ﻿#region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("db6d3561-835e-40d5-b9d4-83951cf426df")]
 
-[assembly: AssemblyCopyright("© 2017 HS Inc.")]
+[assembly: AssemblyCopyright("© 2017 Gygya Inc.")]
 [assembly: AssemblyTrademark("")]
 
 

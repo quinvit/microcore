@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "CalculatorService.Client": {
-      "commandName": "Project",
-      "workingDirectory": "G:\\microcore\\Sample\\CalculatorService.Client\\bin\\Debug\\netcoreapp2.2"
-    }
-  }
-}

@@ -1,5 +1,5 @@
 #region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -42,12 +42,7 @@ namespace HS.Microcore.SharedLogic
         public ConsoleOutputMode ConsoleOutputMode { get; private set; }
 
         /// <summary>
-        /// Specifies how a silo started in this service should behave in a cluster. Not relevant for non-Orleans services.
-        /// </summary>
-        public SiloClusterMode SiloClusterMode { get; private set; }
-
-        /// <summary>
-        /// Specifies what base port should be used for the silo. Not relevant for non-Orleans services. This value
+        /// Specifies what base port should be used. This value
         /// takes precedence over any base port overrides in configuration.
         /// </summary>
         public int? BasePortOverride { get; }
@@ -71,11 +66,6 @@ namespace HS.Microcore.SharedLogic
         public int? ShutdownWhenPidExits { get; }
 
         /// <summary>
-        /// Specifies drain time in this time the servcie status will be 521.
-        /// </summary>
-        public int? ServiceDrainTimeSec { get;  }
-
-        /// <summary>
         /// Defines the time to wait for the service to stop, default is 10 seconds. Only after OnStopWaitTimeSec+ServiceDrainTimeSec the service will be forcibly closed.
         /// </summary>
         public int? OnStopWaitTimeSec { get; set; }
@@ -86,23 +76,19 @@ namespace HS.Microcore.SharedLogic
         /// </summary>
         /// <param name="serviceStartupMode">Optional. The service startup mode to use.</param>
         /// <param name="consoleOutputMode">Optional. The console output mode to use.</param>
-        /// <param name="siloClusterMode">Optional. The silo cluster mode to use.</param>
         /// <param name="basePortOverride">Optional. The base port override to use, or null to not override the base port.</param>
         public ServiceArguments(ServiceStartupMode serviceStartupMode = ServiceStartupMode.Unspecified,
                                 ConsoleOutputMode consoleOutputMode = ConsoleOutputMode.Unspecified,
-                                SiloClusterMode siloClusterMode = SiloClusterMode.Unspecified,
                                 int? basePortOverride = null, string instanceName = null,
                                 int? shutdownWhenPidExits = null, int? slotNumber = null, int? shutdownWaitTimeSec=null,int? serviceDrainTimeSec=null)
         {
             ServiceStartupMode = serviceStartupMode;
             ConsoleOutputMode = consoleOutputMode;
-            SiloClusterMode = siloClusterMode;
             BasePortOverride = basePortOverride;
             InstanceName = instanceName;
             ShutdownWhenPidExits = shutdownWhenPidExits;
             SlotNumber = slotNumber;
             OnStopWaitTimeSec = shutdownWaitTimeSec;
-            ServiceDrainTimeSec = serviceDrainTimeSec;
             ApplyDefaults();
         }
 
@@ -115,13 +101,11 @@ namespace HS.Microcore.SharedLogic
         {
             ServiceStartupMode = ParseEnumArg<ServiceStartupMode>(args);
             ConsoleOutputMode = ParseEnumArg<ConsoleOutputMode>(args);
-            SiloClusterMode = ParseEnumArg<SiloClusterMode>(args);
             BasePortOverride = TryParseInt(ParseStringArg(nameof(BasePortOverride), args));
             InstanceName = ParseStringArg(nameof(InstanceName), args);
             ShutdownWhenPidExits = TryParseInt(ParseStringArg(nameof(ShutdownWhenPidExits), args));
             SlotNumber = TryParseInt(ParseStringArg(nameof(SlotNumber), args));
             OnStopWaitTimeSec = TryParseInt(ParseStringArg(nameof(OnStopWaitTimeSec), args));
-            ServiceDrainTimeSec = TryParseInt(ParseStringArg(nameof(ServiceDrainTimeSec), args));
             ApplyDefaults();
         }
 
@@ -149,19 +133,6 @@ namespace HS.Microcore.SharedLogic
                         break;
                     case ServiceStartupMode.CommandLineNonInteractive:
                         ConsoleOutputMode = ConsoleOutputMode.Standard;
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-
-            if (SiloClusterMode == SiloClusterMode.Unspecified)
-            {
-                switch (ServiceStartupMode)
-                {
-                    case ServiceStartupMode.CommandLineInteractive:
-                    case ServiceStartupMode.CommandLineNonInteractive:
-                        SiloClusterMode = SiloClusterMode.PrimaryNode;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -245,38 +216,5 @@ namespace HS.Microcore.SharedLogic
         /// as <see cref="ServiceStartupMode.WindowsService" />.
         /// </summary>
         Disabled
-    }
-
-
-    /// <summary>
-    /// Specifies how a silo hosten in a service should find other nodes.
-    /// </summary>
-    public enum SiloClusterMode
-    {
-        /// <summary>
-        /// Default. This value will be overwritten by a smart default as described on the other enum values.
-        /// </summary>
-        Unspecified,
-
-        /// <summary>
-        /// Specifies that this node is the primary node in a local cluster, and should host it's own in-memory
-        /// membership and reminder tables. This is the default when running as either
-        /// <see cref="ServiceStartupMode.CommandLineInteractive" /> or
-        /// <see cref="ServiceStartupMode.CommandLineNonInteractive" />.
-        /// </summary>
-        PrimaryNode,
-
-        /// <summary>
-        /// Specifies that this node is a secondary node in a local cluster, and should contact a primary node for
-        /// membership and reminder tables. This is not the default for any mode, and must be explicitly set. 
-        /// </summary>
-        SecondaryNode,
-
-        /// <summary>
-        /// Specifies that this node belongs to a real cluster, which has it's membership table managed by ZooKeeper and
-        /// the reminder table stored on an external database. This is the default when running as
-        /// <see cref="ServiceStartupMode.WindowsService" />.
-        /// </summary>
-        ZooKeeper
     }
 }

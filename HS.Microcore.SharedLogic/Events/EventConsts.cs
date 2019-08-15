@@ -1,5 +1,5 @@
 #region Copyright 
-// Copyright 2017 HS Inc.  All rights reserved.
+// Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
 // you may not use this file except in compliance with the License.  
@@ -27,7 +27,6 @@ namespace HS.Microcore.SharedLogic.Events
         public const string type = "type";
         public const string ServerReqType = "serverReq";
         public const string ClientReqType = "clientReq";
-        public const string GrainReqType = "grainReq";
         public const string BaseEventType = "event";
 
         public const string callID = "callID";
@@ -76,11 +75,6 @@ namespace HS.Microcore.SharedLogic.Events
         public const string siteID = "siteID";
         public const string apikey = "apikey";
         public const string partnerID = "partnerID";
-        public const string grainKeyExtention = "grain.keyExtention";
-        public const string grainPrimaryKey = "grain.primaryKey";
-        public const string siloAddress="silo.address";
-        public const string siloDeploymentId="silo.deploymentId";
-
 
     }
 }
