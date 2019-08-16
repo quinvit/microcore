@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>HS</Authors>
+    <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.Ninject\Hyperscale.Microcore.Ninject.csproj" />
+  </ItemGroup>
+
+</Project>

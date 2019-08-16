@@ -9,11 +9,11 @@
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HS.Microcore.Hosting\HS.Microcore.Hosting.csproj" />
-    <ProjectReference Include="..\..\..\HS.Microcore.Logging.Serilog\HS.Microcore.Logging.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\HS.Microcore.Ninject.Host\HS.Microcore.Ninject.Host.csproj" />
-    <ProjectReference Include="..\..\..\HS.Microcore.Ninject\HS.Microcore.Ninject.csproj" />
-    <ProjectReference Include="..\..\..\HS.Microcore.SharedLogic\HS.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Hosting\Hyperscale.Microcore.Hosting.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Logging.Serilog\Hyperscale.Microcore.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Ninject.Host\Hyperscale.Microcore.Ninject.Host.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Ninject\Hyperscale.Microcore.Ninject.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
     <ProjectReference Include="..\CalculatorService.Interface\CalculatorService.Interface.csproj" />
   </ItemGroup>
 

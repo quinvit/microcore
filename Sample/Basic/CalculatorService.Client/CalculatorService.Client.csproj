@@ -10,8 +10,8 @@
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HS.Microcore.Logging.Serilog\HS.Microcore.Logging.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\HS.Microcore.ServiceDiscovery\HS.Microcore.ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Logging.Serilog\Hyperscale.Microcore.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.ServiceDiscovery\Hyperscale.Microcore.ServiceDiscovery.csproj" />
     <ProjectReference Include="..\CalculatorService.Interface\CalculatorService.Interface.csproj" />
   </ItemGroup>
 

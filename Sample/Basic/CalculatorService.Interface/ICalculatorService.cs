@@ -21,7 +21,7 @@
 #endregion
 
 using System.Threading.Tasks;
-using HS.Common.Contracts.HttpService;
+using Hyperscale.Common.Contracts.HttpService;
 
 namespace CalculatorService.Interface
 {

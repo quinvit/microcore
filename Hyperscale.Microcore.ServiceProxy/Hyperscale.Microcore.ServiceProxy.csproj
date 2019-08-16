@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>HS</Authors>
+    <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="App.Metrics" Version="3.0.0" />
+    <PackageReference Include="System.Runtime.Caching" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.ServiceDiscovery\Hyperscale.Microcore.ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>1.0.4</Version>
+    <Authors>HS</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DataAnnotationsValidator\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Configuration\Hyperscale.Microcore.Configuration.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.ServiceDiscovery\Hyperscale.Microcore.ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
+  </ItemGroup>
+
+</Project>

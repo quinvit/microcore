@@ -1,8 +1,8 @@
 ﻿using System;
 using CalculatorService.Interface;
-using HS.Microcore.Logging.Serilog;
-using HS.Microcore.Ninject;
-using HS.Microcore.SharedLogic;
+using Hyperscale.Microcore.Logging.Serilog;
+using Hyperscale.Microcore.Ninject;
+using Hyperscale.Microcore.SharedLogic;
 using Ninject;
 
 namespace CalculatorService.Client

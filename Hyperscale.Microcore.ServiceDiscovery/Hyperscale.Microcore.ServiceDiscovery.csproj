@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>HS</Authors>
+    <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-06" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>System</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

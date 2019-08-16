@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>1.0.4</Version>
+    <Authors>HS</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DataAnnotationsValidator.NETCore" Version="1.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj" />
+  </ItemGroup>
+
+</Project>

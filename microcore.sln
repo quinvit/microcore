@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.ServiceContract", "HS.ServiceContract\HS.ServiceContract.csproj", "{D9BC0CB2-DC45-4BA0-8813-CD337F9B6EB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.ServiceContract", "Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj", "{D9BC0CB2-DC45-4BA0-8813-CD337F9B6EB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Interfaces", "HS.Microcore.Interfaces\HS.Microcore.Interfaces.csproj", "{48007678-4318-476B-A2DA-2526C2B1BDA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Interfaces", "Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj", "{48007678-4318-476B-A2DA-2526C2B1BDA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.SharedLogic", "HS.Microcore.SharedLogic\HS.Microcore.SharedLogic.csproj", "{A155C872-DEC3-4757-A417-BD6F4629781A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.SharedLogic", "Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj", "{A155C872-DEC3-4757-A417-BD6F4629781A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.ServiceProxy", "HS.Microcore.ServiceProxy\HS.Microcore.ServiceProxy.csproj", "{CEEA6640-0985-480D-B326-35458A84E942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.ServiceProxy", "Hyperscale.Microcore.ServiceProxy\Hyperscale.Microcore.ServiceProxy.csproj", "{CEEA6640-0985-480D-B326-35458A84E942}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.ServiceDiscovery", "HS.Microcore.ServiceDiscovery\HS.Microcore.ServiceDiscovery.csproj", "{1639B431-AE24-4A98-8150-781527A32EEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.ServiceDiscovery", "Hyperscale.Microcore.ServiceDiscovery\Hyperscale.Microcore.ServiceDiscovery.csproj", "{1639B431-AE24-4A98-8150-781527A32EEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Ninject.Host", "HS.Microcore.Ninject.Host\HS.Microcore.Ninject.Host.csproj", "{41955E24-E895-48DE-8BC0-EC4D88056DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Ninject.Host", "Hyperscale.Microcore.Ninject.Host\Hyperscale.Microcore.Ninject.Host.csproj", "{41955E24-E895-48DE-8BC0-EC4D88056DF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Hosting", "HS.Microcore.Hosting\HS.Microcore.Hosting.csproj", "{ABCE5615-F351-482F-9CD1-5EE5EF8ED7F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Hosting", "Hyperscale.Microcore.Hosting\Hyperscale.Microcore.Hosting.csproj", "{ABCE5615-F351-482F-9CD1-5EE5EF8ED7F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Configuration", "HS.Microcore.Configuration\HS.Microcore.Configuration.csproj", "{E29C2F08-296C-4E90-8947-6202E0196B06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Configuration", "Hyperscale.Microcore.Configuration\Hyperscale.Microcore.Configuration.csproj", "{E29C2F08-296C-4E90-8947-6202E0196B06}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Ninject", "HS.Microcore.Ninject\HS.Microcore.Ninject.csproj", "{1D9A87D3-8692-4ED8-A468-7F02D202C1C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Ninject", "Hyperscale.Microcore.Ninject\Hyperscale.Microcore.Ninject.csproj", "{1D9A87D3-8692-4ED8-A468-7F02D202C1C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{BFDC21CC-E686-4C71-9632-C9B09FFA13FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Fakes", "HS.Microcore.Fakes\HS.Microcore.Fakes.csproj", "{0B104187-B28B-42A7-93A9-60CFBA7D06EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Fakes", "Hyperscale.Microcore.Fakes\Hyperscale.Microcore.Fakes.csproj", "{0B104187-B28B-42A7-93A9-60CFBA7D06EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HS.Microcore.Logging.Serilog", "HS.Microcore.Logging.Serilog\HS.Microcore.Logging.Serilog.csproj", "{9E0F18FF-75D7-444A-AE20-9A8CA2EF81DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hyperscale.Microcore.Logging.Serilog", "Hyperscale.Microcore.Logging.Serilog\Hyperscale.Microcore.Logging.Serilog.csproj", "{9E0F18FF-75D7-444A-AE20-9A8CA2EF81DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FD591BD7-7B5A-4D79-B472-C29B6E00BAC2}"
 EndProject

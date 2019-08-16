@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Version>1.0.4</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>HS</Authors>
+    <Description>Hyperscale.Microcore.Ninject</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Ninject.Extensions.Conventions" Version="3.3.0" />
+    <PackageReference Include="Ninject.Extensions.Factory" Version="3.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperscale.Microcore.Configuration\Hyperscale.Microcore.Configuration.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.Hosting\Hyperscale.Microcore.Hosting.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.ServiceDiscovery\Hyperscale.Microcore.ServiceDiscovery.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.ServiceProxy\Hyperscale.Microcore.ServiceProxy.csproj" />
+    <ProjectReference Include="..\Hyperscale.Microcore.SharedLogic\Hyperscale.Microcore.SharedLogic.csproj" />
+    <ProjectReference Include="..\Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj" />
+  </ItemGroup>
+
+</Project>

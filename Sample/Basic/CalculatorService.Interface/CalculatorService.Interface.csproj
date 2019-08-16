@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\HS.Microcore.Interfaces\HS.Microcore.Interfaces.csproj" />
-    <ProjectReference Include="..\..\..\HS.ServiceContract\HS.ServiceContract.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
+    <ProjectReference Include="..\..\..\Hyperscale.ServiceContract\Hyperscale.ServiceContract.csproj" />
   </ItemGroup>
 
 </Project>
