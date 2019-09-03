@@ -6,7 +6,7 @@ A port of https://github.com/gigya/microdot framework to .net core 2.2 with some
 3. Remove Window Service feature to fully compatible in linux/container environment
 3. Replace Metrics.NET by https://www.app-metrics.io/
 
-Original features
+Original features:
 
 1. A service container which accepts command-line parameters that define how your service runs, e.g. as a command-line process, with or without console logs, the port your service will use to listen to incoming requests, whether it runs alone or as part of a cluster (and the cluster name to join), and whether it should shut down gracefully once a monitored parent PID exits. Sensible defaults are used based on your build configuration (Release/Debug).
 inter-service RPC allowing services to call one another. Each service exposes one or more C# interfaces, and clients call it by receiving an instance of an interface that performs transparent RPC using JSON over HTTP. This includes client-side load balancing (no need for a load balancer in front of your service), failover support, and secure comunication via HTTPS with certificates validations for sensitive services, if needed.
