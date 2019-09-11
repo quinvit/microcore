@@ -1,0 +1,111 @@
+<div [style.padding.px]="10">
+  <h2 class="mat-h2">💺 Register</h2>
+  <mat-card>
+    <mat-card-content class="container">
+      <form class="register-form" [formGroup]="register" (ngSubmit)="onRegister()">
+        <!-- fxLayout="row" fxLayoutGap="20px" -->
+        <div>
+          <div fxLayout="column">
+            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center" class="row-example">
+                <mat-form-field>
+                  <input matInput placeholder="First name" formControlName="first">
+                  <mat-icon matSuffix>face</mat-icon>
+                  <mat-error *ngIf="register.get('first').hasError('required')">
+                    First name is required
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Last name" formControlName="last">
+                  <mat-icon matSuffix>face</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center" class="row-example">
+                <mat-form-field>
+                  <input matInput placeholder="Email" formControlName="email">
+                  <mat-icon matSuffix>email</mat-icon>
+                  <mat-error *ngIf="register.get('email').hasError('email') && register.get('email').touched">
+                    Please enter a valid email address
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Company" formControlName="company">
+                  <mat-icon matSuffix>work</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayoutGap="40px" fxLayoutAlign="center stretch" class="row">
+              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start" class="row-example">
+                <mat-form-field>
+                  <input matInput placeholder="Years of experience" formControlName="experience">
+                  <mat-icon matSuffix>history</mat-icon>
+                  <mat-error *ngIf="register.get('experience').hasError('maxlength')">
+                    Invalid experience
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput placeholder="Website" formControlName="website">
+                  <mat-icon matSuffix>web</mat-icon>
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+              <div fxLayout="row" fxLayoutGap="40px">
+                <button type="button" mat-button (click)="addField()">Add social profile</button>
+              </div>
+              <div formArrayName="social" fxLayout="row" fxLayoutGap="10px" fxLayoutWrap>
+                <div *ngFor="let url of socialFileds.controls; let i=index" [formGroupName]="i">
+                  <mat-form-field>
+                    <input matInput placeholder="URL" formControlName="url">
+                    <mat-icon matSuffix>link</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start" class="row">
+              <div fxLayout="row" fxLayoutGap="50px">
+                <div fxLayout="column">
+                  <h3 class="subheading-2">Designations</h3>
+                  <mat-radio-group fxLayout="column" fxLayoutGap="15px" formControlName="designation">
+                    <mat-radio-button *ngFor="let designation of designations" [value]="designation">
+                      {{designation}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="start">
+                  <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
+                    <mat-form-field style="max-width: 250px;">
+                      <mat-select placeholder="Track" formControlName="track">
+                        <mat-option value="Web">Web</mat-option>
+                        <mat-option value="Mobile">Mobile</mat-option>
+                      </mat-select>
+                    </mat-form-field>                    
+                  </div>
+                  <strong>Bringing Guest</strong>
+                  <stepper-control formControlName="guest"></stepper-control>
+                  <!-- <h3 class="subheading-2">Attended any of these</h3>
+                  <mat-checkbox [value]="event" name="events" formConrtolName="events" *ngFor="let event of events">{{event}}</mat-checkbox> -->
+                </div>
+              </div>
+            </div>            
+            <div class="row">
+              <button [disabled]="!register.valid" mat-raised-button color="primary">Register</button>
+              &nbsp;
+              <button type="button" mat-button>Cancel</button>
+            </div>
+          </div>
+          <!-- <div fxLayoutAlign="stretch">
+            <pre>Status : {{register.status | json }}
+Data :               
+{{register.value | json }}
+Errors :
+{{ register.get('email').errors | json }}
+            </pre>
+          </div> -->
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+.container{
+    padding: 20px;
+    .register-form{
+        .row{
+            margin-bottom: 20px;            
+              h3{
+                  margin-bottom: 10px !important;
+              }              
+        }
+        pre{
+            width: 300px;
+            background-color: #FAFAFA;
+        }
+    }
+    mat-form-field{
+        // min-width: 325px;
+        min-width: 48%;
+    }
+    .social{
+        min-width: auto;
+    }
+}

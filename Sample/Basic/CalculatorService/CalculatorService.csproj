@@ -6,10 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hyperscale.Microcore.Hosting" Version="1.0.4" />
-    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.4" />
-    <PackageReference Include="Hyperscale.Microcore.Ninject.Host" Version="1.0.4" />
+    <PackageReference Include="Hyperscale.Microcore.Hosting" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Ninject.Host" Version="1.0.8" />
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
+    <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
+
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CalculatorService.Interface\CalculatorService.Interface.csproj" />

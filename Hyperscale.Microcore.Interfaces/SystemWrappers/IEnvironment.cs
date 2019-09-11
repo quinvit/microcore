@@ -43,11 +43,5 @@ namespace Hyperscale.Microcore.Interfaces.SystemWrappers
         string DeploymentEnvironment { get; }
 
         string ConsulAddress { get; }
-   
-        [Obsolete("To be removed on Microcore version 2.0. Use IEnvironmentVariableProvider.SetEnvironmentVariableForProcess instead")]
-        void SetEnvironmentVariableForProcess(string name, string value);
-
-        [Obsolete("To be removed on Microcore version 2.0. Use IEnvironmentVariableProvider.SetEnvironmentVariableForProcess instead")]
-        string GetEnvironmentVariable(string name);
     }
 }

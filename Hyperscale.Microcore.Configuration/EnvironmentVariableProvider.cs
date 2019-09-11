@@ -50,9 +50,6 @@ namespace Hyperscale.Microcore.Configuration
             }
 
             ReadFromFile(locEnvFilePath);
-
-            DataCenter = GetEnvironmentVariable("ZONE") ?? GetEnvironmentVariable("DC");
-            DeploymentEnvironment = GetEnvironmentVariable("ENV");
         }
 
         public void SetEnvironmentVariableForProcess(string name, string value)
@@ -63,12 +60,6 @@ namespace Hyperscale.Microcore.Configuration
         public string GetEnvironmentVariable(string name) { return Environment.GetEnvironmentVariable(name)?.ToLower(); }
 
         public string PlatformSpecificPathPrefix { get; }
-
-        [Obsolete("To be deleted on version 2.0")]
-        public string DataCenter { get; }
-
-        [Obsolete("To be deleted on version 2.0")]
-        public string DeploymentEnvironment { get; }
 
 
         /// <summary>

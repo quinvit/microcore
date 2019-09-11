@@ -18,10 +18,6 @@ namespace Hyperscale.Microcore.Logging.Serilog
 
         public SerilogLogger(Type receivingType)
         {
-            Log.Logger = new LoggerConfiguration()
-                .ReadFrom.AppSettings()
-                .CreateLogger();
-
             AssemblyName reflectedAssembly = receivingType.Assembly.GetName();
             CallSiteInfoTemplate = new LogCallSiteInfo
             {

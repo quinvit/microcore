@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.4" />
-    <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.4" />
+    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.8" />
     <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
     <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
   </ItemGroup>

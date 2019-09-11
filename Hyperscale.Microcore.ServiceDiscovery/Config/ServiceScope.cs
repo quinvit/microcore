@@ -30,10 +30,6 @@ namespace Hyperscale.Microcore.ServiceDiscovery.Config
     public enum ServiceScope
     {
         /// This Service is in entire Zone scope, and should get requests from any environment within this data-center.
-        [Obsolete("Use Zone instead")]
-        DataCenter = 0,
-
-        /// This Service is in entire Zone scope, and should get requests from any environment within this data-center.
         Zone = 0,
 
         /// This Service is in Environment scope, and should get requests only from other services in same environment and same data-center.

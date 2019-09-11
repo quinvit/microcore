@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-ReportService-48774ce3-7b90-4ea4-acd4-7afcf1503418</UserSecretsId>
+    <WebProject_DirectoryAccessLevelKey>1</WebProject_DirectoryAccessLevelKey>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..</DockerfileContext>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Discovery.config" />
+    <Content Remove="loadPaths.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Discovery.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="loadPaths.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
+    <PackageReference Include="Hyperscale.Microcore.Hosting" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Ninject.Host" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Ninject" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.ServiceProxy" Version="1.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthService.Interface\AuthService.Interface.csproj" />
+    <ProjectReference Include="..\ReportService.Interface\ReportService.Interface.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+</Project>

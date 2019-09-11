@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RuntimeFrameworkVersion>2.2.0</RuntimeFrameworkVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Hyperscale.Microcore.Interfaces" Version="1.0.4" />
+    <PackageReference Include="Hyperscale.ServiceContract" Version="1.0.4" />
+  </ItemGroup>
+</Project>

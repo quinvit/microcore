@@ -1,10 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>1.0.4</Version>
+    <Version>1.0.8</Version>
     <Authors>HS</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>
+    <Description>Hyperscale.Microcore</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +19,13 @@
     <ProjectReference Include="..\Hyperscale.Microcore.Hosting\Hyperscale.Microcore.Hosting.csproj" />
     <ProjectReference Include="..\Hyperscale.Microcore.Logging.Serilog\Hyperscale.Microcore.Logging.Serilog.csproj" />
     <ProjectReference Include="..\Hyperscale.Microcore.Ninject\Hyperscale.Microcore.Ninject.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,20 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>HS</Authors>
-    <Version>1.0.4</Version>
+    <Version>1.0.8</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <Description>Hyperscale.Microcore</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Serilog" Version="2.8.0" />
-    <PackageReference Include="Serilog.Settings.AppSettings" Version="2.2.2" />
+
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Hyperscale.Microcore.Interfaces\Hyperscale.Microcore.Interfaces.csproj" />
     <ProjectReference Include="..\Hyperscale.Microcore.Ninject\Hyperscale.Microcore.Ninject.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

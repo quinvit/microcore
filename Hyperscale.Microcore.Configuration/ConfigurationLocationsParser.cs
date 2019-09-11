@@ -28,7 +28,6 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Hyperscale.Common.Contracts.Exceptions;
-using Hyperscale.Microcore.Interfaces.Configuration;
 using Hyperscale.Microcore.Interfaces.SystemWrappers;
 using Hyperscale.Microcore.SharedLogic;
 using Hyperscale.Microcore.SharedLogic.Exceptions;
@@ -50,6 +49,9 @@ namespace Hyperscale.Microcore.Configuration
         internal const string HS_CONFIG_ROOT = "HS_CONFIG_ROOT";
         internal const string HS_CONFIG_ROOT_DEFAULT = "/hs/config/";
         internal const string LOADPATHS_JSON = "loadPaths.json";
+        internal string PlatformSpecificPathPrefix = Environment.OSVersion.Platform == PlatformID.Unix? "/etc" : "C:";
+
+
         private string AppName { get; }
 
 
@@ -62,17 +64,17 @@ namespace Hyperscale.Microcore.Configuration
         public string ConfigRoot { get; }
         public string LoadPathsFilePath { get; }
 
-        public ConfigurationLocationsParser(IFileSystem fileSystemInstance, IEnvironmentVariableProvider environmentVariableProvider)
+        public ConfigurationLocationsParser(IFileSystem fileSystemInstance)
         {
             AppName = CurrentApplicationInfo.Name;
-            environmentVariableProvider.SetEnvironmentVariableForProcess("AppName", CurrentApplicationInfo.Name);
+            Environment.SetEnvironmentVariable("AppName", CurrentApplicationInfo.Name);
 
-            ConfigRoot = environmentVariableProvider.GetEnvironmentVariable(HS_CONFIG_ROOT);
+            ConfigRoot = Environment.GetEnvironmentVariable(HS_CONFIG_ROOT);
 
             if (string.IsNullOrEmpty(ConfigRoot))
-                ConfigRoot = environmentVariableProvider.PlatformSpecificPathPrefix + HS_CONFIG_ROOT_DEFAULT;
+                ConfigRoot = Environment.CurrentDirectory;
 
-            LoadPathsFilePath = environmentVariableProvider.GetEnvironmentVariable(HS_CONFIG_PATHS_FILE);
+            LoadPathsFilePath = Environment.GetEnvironmentVariable(HS_CONFIG_PATHS_FILE);
             
             if (string.IsNullOrEmpty(LoadPathsFilePath))
                 LoadPathsFilePath = Path.Combine(ConfigRoot, LOADPATHS_JSON);
@@ -84,11 +86,11 @@ namespace Hyperscale.Microcore.Configuration
 
             var configPathDeclarations = ParseAndValidateConfigLines(LoadPathsFilePath, fileSystemInstance);
 
-            ConfigFileDeclarations = ExpandConfigPathDeclarations(environmentVariableProvider, configPathDeclarations, environmentVariableProvider.PlatformSpecificPathPrefix).ToArray();
+            ConfigFileDeclarations = ExpandConfigPathDeclarations(configPathDeclarations, PlatformSpecificPathPrefix).ToArray();
         }
 
 
-        private List<ConfigFileDeclaration> ExpandConfigPathDeclarations(IEnvironmentVariableProvider environmentVariableProvider, ConfigFileDeclaration[] configs, string prefix)
+        private List<ConfigFileDeclaration> ExpandConfigPathDeclarations(ConfigFileDeclaration[] configs, string prefix)
         {
 
             var configPathsSet = new SortedSet<ConfigFileDeclaration>(configs);
@@ -106,7 +108,7 @@ namespace Hyperscale.Microcore.Configuration
                                 .Select(match => new
                                 {
                                     Placehodler = match.Groups[0].Value,
-                                    Value = environmentVariableProvider.GetEnvironmentVariable(match.Groups[1].Value)
+                                    Value = Environment.GetEnvironmentVariable(match.Groups[1].Value)
                                 }).ToList();
 
                 var missingEnvVariables = list.Where(a => string.IsNullOrEmpty(a.Value)).Select(a => a.Placehodler.Trim('%')).ToList();

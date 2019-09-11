@@ -35,35 +35,36 @@ namespace Hyperscale.Microcore.SharedLogic.SystemWrappers
 
     public class EnvironmentInstance : IEnvironment
     {
-        private readonly IEnvironmentVariableProvider _environmentVariableProvider;
         private readonly string _region;
         private Func<DataCentersConfig> GetDataCentersConfig { get; }
 
-        public EnvironmentInstance(IEnvironmentVariableProvider environmentVariableProvider, Func<DataCentersConfig> getDataCentersConfig)
+        public EnvironmentInstance(Func<DataCentersConfig> getDataCentersConfig)
         {
-            _environmentVariableProvider = environmentVariableProvider;
             GetDataCentersConfig = getDataCentersConfig;
-            Zone = environmentVariableProvider.GetEnvironmentVariable("ZONE") ?? environmentVariableProvider.GetEnvironmentVariable("DC");
-            _region = environmentVariableProvider.GetEnvironmentVariable("REGION");
-            DeploymentEnvironment = environmentVariableProvider.GetEnvironmentVariable("ENV");
-            ConsulAddress = environmentVariableProvider.GetEnvironmentVariable("CONSUL");
+            Zone = Environment.GetEnvironmentVariable("ZONE") ?? Environment.GetEnvironmentVariable("DC");
+            _region = Environment.GetEnvironmentVariable("REGION");
+            DeploymentEnvironment = Environment.GetEnvironmentVariable("ENV");
+            ConsulAddress = Environment.GetEnvironmentVariable("CONSUL");
 
-            if (string.IsNullOrEmpty(Zone) || string.IsNullOrEmpty(DeploymentEnvironment))
-                throw new EnvironmentException("One or more of the following environment variables, which are required, have not been set: %ZONE%, %ENV%");
+            if (string.IsNullOrEmpty(Zone))
+            {
+                Zone = "dc1";
+            }
+
+            if (string.IsNullOrEmpty(_region))
+            {
+                Zone = "vn";
+            }
+
+            if (string.IsNullOrEmpty(DeploymentEnvironment))
+            {
+                Zone = "dev";
+            }
         }
 
         public string Zone { get; }
         public string Region => _region ?? GetDataCentersConfig().Current; // if environmentVariable %REGION% does not exist, take the region from DataCenters configuration (the region was previously called "DataCenter")
         public string DeploymentEnvironment { get; }        
         public string ConsulAddress { get; }
-
-        [Obsolete("To be deleted on version 2.0")]
-        public void SetEnvironmentVariableForProcess(string name, string value)
-        {
-            _environmentVariableProvider.SetEnvironmentVariableForProcess(name, value);
-        }
-
-        [Obsolete("To be deleted on version 2.0")]
-        public string GetEnvironmentVariable(string name) => _environmentVariableProvider.GetEnvironmentVariable(name); 
     }
 }

@@ -5,6 +5,7 @@ using Hyperscale.Microcore.Ninject;
 using Hyperscale.Microcore.Ninject.Host;
 using Hyperscale.Microcore.SharedLogic;
 using Ninject;
+using Serilog;
 
 namespace CalculatorService
 {
@@ -14,11 +15,11 @@ namespace CalculatorService
         static void Main(string[] args)
         {
             Environment.SetEnvironmentVariable("HS_CONFIG_ROOT", Environment.CurrentDirectory);
-            Environment.SetEnvironmentVariable("HS_ENVVARS_FILE", Environment.CurrentDirectory);
-            Environment.SetEnvironmentVariable("REGION", "vn");
-            Environment.SetEnvironmentVariable("ZONE", "hcm");
-            Environment.SetEnvironmentVariable("ENV", "dev");
+            CurrentApplicationInfo.Init("CalculatorService");
 
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.AppSettings()
+                .CreateLogger();
 
             try
             {

@@ -26,7 +26,7 @@ using Hyperscale.Common.Contracts.HttpService;
 namespace CalculatorService.Interface
 {
 
-    [HttpService(12323)]
+    [HttpService(80)]
     public interface ICalculatorService
     {
         Task<int> Add(int a, int b);
