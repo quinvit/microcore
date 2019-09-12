@@ -19,4 +19,6 @@ The commnunication between microservices is asynchronous HTTP and is handled by 
 
 The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale out or scale up any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS.
 
+![Sample](sample.png)
+
 [Online demo](https://quinvit.z23.web.core.windows.net)
