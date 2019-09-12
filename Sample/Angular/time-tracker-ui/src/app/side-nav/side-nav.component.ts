@@ -21,22 +21,19 @@ export class SideNavComponent {
             {
                 title: 'Timesheet',
                 icon: 'bar_chart',
-                route: 'reports',
-                requireAuthenticated: true
+                route: 'reports'
             },
             {
                 title: 'Location',
                 icon: 'location_city',
-                route: 'location',
-                requireAuthenticated: true
+                route: 'location'
             },
             {
                 title: 'Register',
                 icon: 'person_add',
-                route: 'register',
-                requireAuthenticated: false
+                route: 'register'
             }
-        ].filter(x => (!x.requireAuthenticated && !this.authenticated) || (x.requireAuthenticated && this.authenticated));
+        ];
     }
 
     get authenticated(): boolean {
