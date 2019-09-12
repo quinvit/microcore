@@ -49,6 +49,41 @@ To start angular application, type ***ng serve*** in terminal.
 
 ![VsCode](vs_code_angular.png)
 
+Register micro-services in Discovery.config:
+```
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <Discovery>
+    <Services>
+      <ReportService Source="Config" Hosts="localhost:80" />
+      <AuthService Source="Config" Hosts="localhost:81" />
+      
+      <!--<ReportService Source="Config" Hosts="timetracker-reportservice.azurewebsites.net:80" />
+      <AuthService Source="Config" Hosts="timetracker-authservice.azurewebsites.net:80" />-->
+    </Services>
+  </Discovery>
+</configuration>
+```
+
+This is how micro-services are integrated to ASP.NET Core (Startup.cs):
+```
+public Startup(IConfiguration configuration)
+{
+    ...
+    StandardKernel = new StandardKernel();
+    StandardKernel.Load<MicrocoreModule>();
+    StandardKernel.Load<SerilogModule>();
+}
+```
+```
+public void ConfigureServices(IServiceCollection services)
+{
+    ...
+    services.AddTransient((o) => StandardKernel.Get<IReportService>());
+    services.AddTransient((o) => StandardKernel.Get<IAuthService>());
+}
+```
+
 The backend API code in API Gateway:
 ```
 [Authorize]
@@ -74,42 +109,7 @@ public class ReportsController : ControllerBase
 }
 ```
 
-Register micro-services in Discovery.config:
-```
-<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-  <Discovery>
-    <Services>
-      <ReportService Source="Config" Hosts="localhost:80" />
-      <AuthService Source="Config" Hosts="localhost:81" />
-      
-      <!--<ReportService Source="Config" Hosts="timetracker-reportservice.azurewebsites.net:80" />
-      <AuthService Source="Config" Hosts="timetracker-authservice.azurewebsites.net:80" />-->
-    </Services>
-  </Discovery>
-</configuration>
-```
-
-This is how micro-services are integrated to ASP.NTE Core (Startup.cs):
-```
-public Startup(IConfiguration configuration)
-{
-    ...
-    StandardKernel = new StandardKernel();
-    StandardKernel.Load<MicrocoreModule>();
-    StandardKernel.Load<SerilogModule>();
-}
-```
-```
-public void ConfigureServices(IServiceCollection services)
-{
-    ...
-    services.AddTransient((o) => StandardKernel.Get<IReportService>());
-    services.AddTransient((o) => StandardKernel.Get<IAuthService>());
-}
-```
-
-To start backend API Gateway and micro-services at local, just run these project in Visual Studio 2019:
+To start backend API Gateway and micro-services at local, just run these projects in Visual Studio 2019:
 
 ![VsStudio](vs_demo.png)
 
@@ -121,7 +121,9 @@ Finally, after login to demo users, this is how the application looks like:
 
 ![Application](chrome_demo.png)
 
-The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale out or scale up any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS.
+The API Gateway and micro-services are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. For the angular dist, we simply put all output files of ***ng build --prod*** result to an Azure Storage with enabled Static Website feature.
+
+# Deploy and demo
 
 ![Sample](sample.png)
 
