@@ -9,11 +9,13 @@ You can use sample users
 The backend side, we use simple API Gateway which is implemented by ASP.Net Core 2.2 Web API and there are two small microservices, ReportService and AuthService. 
 
 After login, click on ***Timesheet*** menu to retrieve data from server. Here is the data flow:
-angular application -> API Gateway -> ReportService (to retrieve fake report data) -> AuthService (to fullfil user name and email for report data).
+Angular application -> API Gateway -> ReportService (to retrieve fake report data) -> AuthService (to fullfil user name and email for report data).
 
 The database access and ***Register*** feature to demo auto-register user in Azure Active Directory is comming soon.
 
 The commnunication between microservices is asynchronous HTTP and is handled by https://github.com/quinvit/microcore library. The library covers network call, serialization/deserialization, contract mapping. We only use microservice by using DI to inject service interface to constructor as in-process service injection.
+
+![Architecture](gateway.png)
 
 # Contents
 
@@ -121,7 +123,7 @@ Finally, after login to demo users, this is how the application looks like:
 
 ![Application](chrome_demo.png)
 
-The API Gateway and micro-services are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. For the angular dist, we simply put all output files of ***ng build --prod*** result to an Azure Storage with enabled Static Website feature.
+The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. For the angular dist, we simply put all output files of ***ng build --prod*** result to an Azure Storage with enabled Static Website feature.
 
 # Deploy and demo
 
