@@ -30,17 +30,17 @@ namespace Hyperscale.Microcore.ServiceDiscovery
     public class EndPointsResult
     {
         /// <summary>
-        /// Result of endpoints which returned by Consul
+        /// Result of endpoints
         /// </summary>
         public EndPoint[] EndPoints { get; set; }=new EndPoint[0];
 
         /// <summary>
-        /// Log of Request sent to Consul
+        /// Log of Request sent
         /// </summary>
         public string RequestLog { get; set; }
 
         /// <summary>
-        /// Log of Response from Consul
+        /// Log of Response
         /// </summary>
         public string ResponseLog { get; set; }
 
@@ -84,42 +84,4 @@ namespace Hyperscale.Microcore.ServiceDiscovery
             return $"EndpointsResult: {EndPoints.Length} Endpoints, IsQueryDefined: {IsQueryDefined}, Error: {Error?.Message ?? "null"}";
         }
     }
-
-    public interface IConsulClient: IDisposable
-    {
-        Task Init();
-        EndPointsResult Result { get; }
-        ISourceBlock<EndPointsResult> ResultChanged { get; }
-        Uri ConsulAddress { get; }
-    }
-
-
-
-    public class ConsulEndPoint : EndPoint
-    {
-        /// <summary>
-        /// Service version which is installed on this endpoint
-        /// </summary>
-        public string Version { get; set; }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is ConsulEndPoint other))
-                return false;
-
-            if (Version != other.Version)
-                return false;
-
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (base.GetHashCode() * 397) ^ (Version != null ? Version.GetHashCode() : 0);
-            }
-        }
-    }
-
 }

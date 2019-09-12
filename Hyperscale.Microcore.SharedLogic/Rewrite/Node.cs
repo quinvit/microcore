@@ -1,4 +1,4 @@
-﻿namespace Hyperscale.Microcore.SharedLogic.Rewrite
+﻿namespace Hyperscale.Microcore.SharedLogic.LoadBalancer
 {
     public class Node
     {

@@ -23,7 +23,7 @@
 using Hyperscale.Common.Contracts.Exceptions;
 using Hyperscale.Microcore.SharedLogic.Exceptions;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     internal static class Ex
     {

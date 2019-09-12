@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>HS</Authors>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>

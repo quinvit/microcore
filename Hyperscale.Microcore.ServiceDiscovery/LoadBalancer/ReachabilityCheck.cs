@@ -1,4 +1,4 @@
-#region Copyright 
+﻿#region Copyright 
 // Copyright 2017 Gygya Inc.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -20,29 +20,15 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using Hyperscale.Microcore.SharedLogic;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using System.Threading;
+using System.Threading.Tasks;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     /// <summary>
-    /// Returns the current computer as the sole node. Never changes.
-    /// </summary>
-    public class LocalNodeSource : INodeSource
-    {
-        private static readonly Node[] _nodes;
-
-        static LocalNodeSource()
-        {
-            _nodes = new []{new Node(CurrentApplicationInfo.HostName)};
-        }
-
-        public Node[] GetNodes() => _nodes;
-
-        public void Dispose()
-        {
-            // nothing to shutdown            
-        }
-    }
-
+    /// Check if the specified node is reachable. 
+    /// Task should finish successfully if service is reachable, or throw a descriptive exception if it is not
+    /// </summary>    
+    public delegate Task ReachabilityCheck(Node node, CancellationToken cancellationToken);
 }

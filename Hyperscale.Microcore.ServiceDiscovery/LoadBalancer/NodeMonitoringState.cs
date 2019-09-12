@@ -24,9 +24,9 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Hyperscale.Microcore.Interfaces.Logging;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     internal class NodeMonitoringState
     {

@@ -37,8 +37,6 @@ namespace Hyperscale.Microcore.Interfaces.Events
 
         EventConfiguration Configuration { get; set; }
 
-        IEnvironment Environment { get; set; }
-
         IStackTraceEnhancer StackTraceEnhancer { get; set; }
     }
 }

@@ -24,8 +24,8 @@ using System;
 using System.Threading.Tasks;
 using Hyperscale.Microcore.ServiceDiscovery;
 using Hyperscale.Microcore.ServiceDiscovery.Config;
-using Hyperscale.Microcore.ServiceDiscovery.Rewrite;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.ServiceDiscovery.LoadBalancer;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
 namespace Hyperscale.Microcore.Fakes.Discovery
 {
@@ -45,7 +45,7 @@ namespace Hyperscale.Microcore.Fakes.Discovery
 
         public async Task<Node[]> GetNodes(DeploymentIdentifier deploymentIdentifier)
         {
-            return new LocalNodeSource().GetNodes();
+            return await Task.FromResult(new LocalNodeSource().GetNodes());
         }
 
         public void Dispose()

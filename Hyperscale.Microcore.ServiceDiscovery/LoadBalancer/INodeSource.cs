@@ -20,18 +20,22 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+using System;
+using Hyperscale.Common.Contracts.Exceptions;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
+
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
-    public static class DeploymentIdentifierConsulExtensions
+    /// <summary>
+    /// A source which supplies updated list of available nodes for discovery of a specific service and environment
+    /// </summary>
+    public interface INodeSource: IDisposable
     {
         /// <summary>
-        /// Returns the service name as it is used by Consul, e.g. "ServiceName-env"
+        /// Returns all nodes. Throws detailed exception if no nodes are available which includes the source's reason.
         /// </summary>
-        public static string GetConsulServiceName(this DeploymentIdentifier deploymentIdentifier)
-        {
-            return deploymentIdentifier.IsEnvironmentSpecific ?
-                $"{deploymentIdentifier.ServiceName}-{deploymentIdentifier.DeploymentEnvironment}" :
-                deploymentIdentifier.ServiceName;
-        }
+        /// <returns>A non-empty array of nodes.</returns>
+        /// <exception cref="EnvironmentException">Thrown when no nodes are available, the service was undeployed or an error occurred.</exception>
+        Node[] GetNodes();
     }
 }

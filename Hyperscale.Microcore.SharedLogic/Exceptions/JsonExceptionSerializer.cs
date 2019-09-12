@@ -36,7 +36,7 @@ namespace Hyperscale.Microcore.SharedLogic.Exceptions
         private static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
 		{
 			TypeNameHandling = TypeNameHandling.All,
-			Binder = new ExceptionHierarchySerializationBinder(),
+			SerializationBinder = new ExceptionHierarchySerializationBinder(),
             Formatting = Formatting.Indented,
             DateParseHandling = DateParseHandling.DateTimeOffset,
             Converters = { new StripHttpRequestExceptionConverter() }
@@ -45,7 +45,7 @@ namespace Hyperscale.Microcore.SharedLogic.Exceptions
 	    private static readonly JsonSerializer Serializer = new JsonSerializer
 	    {
 	        TypeNameHandling = TypeNameHandling.All,
-	        Binder = new ExceptionHierarchySerializationBinder(),
+	        SerializationBinder = new ExceptionHierarchySerializationBinder(),
 	        Formatting = Formatting.Indented,
 	        DateParseHandling = DateParseHandling.DateTimeOffset,
 	        Converters = { new StripHttpRequestExceptionConverter() }

@@ -22,9 +22,9 @@
 
 using System;
 using System.Threading.Tasks;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     /// <summary>
     /// Factory to get Discovery components: LoadBalancer and NodeSource

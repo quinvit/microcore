@@ -14,8 +14,6 @@ namespace Hyperscale.Microcore.Interfaces.Events
         public string Name;
         public string Value;
         public EventFieldAttribute Attribute;
-
-        [Obsolete]
-        public bool ShouldEncrypt; // TODO: Remove
+        public bool ShouldEncrypt;
     }
 }

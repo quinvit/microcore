@@ -32,9 +32,9 @@ using Hyperscale.Microcore.Interfaces.SystemWrappers;
 using Hyperscale.Microcore.ServiceDiscovery.HostManagement;
 using Hyperscale.Microcore.SharedLogic.Events;
 using Hyperscale.Microcore.SharedLogic.Monitor;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {    
     /// <summary>
     /// Provides a reachable node for each call to <see cref="GetNode"/>

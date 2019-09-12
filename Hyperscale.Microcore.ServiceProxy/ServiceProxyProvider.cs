@@ -437,9 +437,6 @@ namespace Hyperscale.Microcore.ServiceProxy
                             if (remoteException is RequestException || remoteException is EnvironmentException)
                                 ExceptionDispatchInfo.Capture(remoteException).Throw();
 
-                            if (remoteException is UnhandledException)
-                                remoteException = remoteException.InnerException;
-
                             throw new RemoteServiceException("The remote service returned a failure response. See " +
                                                              "the 'RequestUri' property on this exception for the URL that was called, and the " +
                                                              "inner exception for details.",

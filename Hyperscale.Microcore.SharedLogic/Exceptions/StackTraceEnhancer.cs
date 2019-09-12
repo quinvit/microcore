@@ -15,20 +15,18 @@ namespace Hyperscale.Microcore.SharedLogic.Exceptions
     public class StackTraceEnhancer : IStackTraceEnhancer
     {
         private Func<StackTraceEnhancerSettings> GetConfig { get; }
-        private IEnvironment Environment { get; }
         private static readonly JsonSerializer Serializer = new JsonSerializer
         {
             TypeNameHandling = TypeNameHandling.All,
-            Binder = new ExceptionHierarchySerializationBinder(),
+            SerializationBinder = new ExceptionHierarchySerializationBinder(),
             Formatting = Formatting.Indented,
             DateParseHandling = DateParseHandling.DateTimeOffset,
             Converters = { new StripHttpRequestExceptionConverter() }
         };
 
-        public StackTraceEnhancer(Func<StackTraceEnhancerSettings> getConfig, IEnvironment environment)
+        public StackTraceEnhancer(Func<StackTraceEnhancerSettings> getConfig)
         {
             GetConfig = getConfig;
-            Environment = environment;
         }
 
         public JObject ToJObjectWithBreadcrumb(Exception exception)
@@ -51,9 +49,7 @@ namespace Hyperscale.Microcore.SharedLogic.Exceptions
             {
                 ServiceName = CurrentApplicationInfo.Name,
                 ServiceVersion = CurrentApplicationInfo.Version.ToString(),
-                HostName = CurrentApplicationInfo.HostName,
-                DataCenter = Environment.Zone,
-                DeploymentEnvironment = Environment.DeploymentEnvironment
+                HostName = CurrentApplicationInfo.HostName
             };
 
             if (exception is SerializableException serEx)

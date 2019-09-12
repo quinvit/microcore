@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>HS</Authors>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-06" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

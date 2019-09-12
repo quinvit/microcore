@@ -27,16 +27,13 @@ namespace Hyperscale.Microcore.SharedLogic.Events
 
 
         private Func<EventConfiguration> LoggingConfigFactory { get; }
-        private IEnvironment Environment { get; }
         private IStackTraceEnhancer StackTraceEnhancer { get; }
         private Func<EventConfiguration> EventConfig { get; }
 
 
-        public EventSerializer(Func<EventConfiguration> loggingConfigFactory,
-            IEnvironment environment, IStackTraceEnhancer stackTraceEnhancer, Func<EventConfiguration> eventConfig)
+        public EventSerializer(Func<EventConfiguration> loggingConfigFactory, IStackTraceEnhancer stackTraceEnhancer, Func<EventConfiguration> eventConfig)
         {
             LoggingConfigFactory = loggingConfigFactory;
-            Environment = environment;
             StackTraceEnhancer = stackTraceEnhancer;
             EventConfig = eventConfig;
         }
@@ -46,7 +43,6 @@ namespace Hyperscale.Microcore.SharedLogic.Events
         public IEnumerable<SerializedEventField> Serialize(IEvent evt, Func<EventFieldAttribute, bool> predicate = null)
         {
             evt.Configuration = LoggingConfigFactory();
-            evt.Environment = Environment;
             evt.StackTraceEnhancer = StackTraceEnhancer;
 
             foreach (var member in GetMembersToSerialize(evt.GetType()))

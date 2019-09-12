@@ -61,40 +61,4 @@ namespace Hyperscale.Common.Contracts.Exceptions
 		protected ProgrammaticException(SerializationInfo info, StreamingContext context) 
             : base(info, context) { }
 	}
-
-    /// <summary>
-    /// This exception is thrown by services when they encounter any unhandled exception that doesn't derive from
-    /// <see cref="SerializableException"/> (e.g. <see cref="NullReferenceException"/>). It contains the original
-    /// exception in its <see cref="Exception.InnerException"/> property. On the client-side, they are instead exposed
-    /// as an RemoteServiceException, having an inner exception copied over. You should never throw this exception from
-    /// your code.
-    /// </summary>
-    [Serializable, Obsolete("No longer used, preserved for backwards compatibility with older servers.")]
-    public class UnhandledException : ProgrammaticException
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UnhandledException"/> class with the specified inner exception
-        /// that is the cause of this exception.
-        /// </summary>
-        /// <param name="innerException">The exception that is the cause of the current exception.</param>
-        /// <param name="encrypted">Optional. A collection of type <see cref="Tags"/> that contains additional data
-        /// about the exception, which must be encrypted when stored.</param>
-        /// <param name="unencrypted">Optional. A collection of type <see cref="Tags"/> that contains additional data
-        /// about the exception, which needn't be encrypted when stored.</param>
-        public UnhandledException(Exception innerException, Tags encrypted = null, Tags unencrypted = null)
-            : base("An unhandled exception occurred when processing this request. See InnerException for details.", innerException, encrypted, unencrypted) { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProgrammaticException"/> class with serialized data.
-        /// </summary>
-        /// <param name="info"> The <see cref="SerializationInfo"/> that holds the serialized object data about the
-        /// exception being thrown.</param>
-        /// <param name="context">The <see cref="StreamingContext"/> that contains  contextual information about the
-        /// source or destination.</param>
-        /// <exception cref="ArgumentNullException">The <paramref name="info"/> parameter is null.</exception>
-        /// <exception cref="SerializationException">The class name is null or <see cref="Exception.HResult"/> is zero
-        /// (0). </exception>
-        protected UnhandledException(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
-    }
 }

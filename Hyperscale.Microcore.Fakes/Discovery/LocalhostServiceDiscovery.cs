@@ -26,9 +26,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Hyperscale.Microcore.ServiceDiscovery;
-using Hyperscale.Microcore.ServiceDiscovery.Rewrite;
+using Hyperscale.Microcore.ServiceDiscovery.LoadBalancer;
 using Hyperscale.Microcore.SharedLogic.HttpService;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
 namespace Hyperscale.Microcore.Fakes.Discovery
 {

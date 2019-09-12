@@ -35,7 +35,7 @@ namespace Hyperscale.Microcore.Logging.Serilog
             var logLevel = ToLogLevel(level);
             if (Log.Logger.IsEnabled(logLevel))
             {
-                var messageWithTags = message + ". " + string.Join(", ", unencryptedTags.Select(kvp => $"{kvp.Key.Substring(5)}={EventFieldFormatter.SerializeFieldValue(kvp.Value)}")) + ". ";
+                var messageWithTags = message + " " + string.Join(", ", unencryptedTags.Select(kvp => $"{kvp.Key.Substring(5)}={EventFieldFormatter.SerializeFieldValue(kvp.Value)}")) + ". ";
                 Log.Logger.Write(logLevel, exception, messageWithTags);
             }
 

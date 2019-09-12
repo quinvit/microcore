@@ -28,7 +28,7 @@ using Hyperscale.Microcore.Configuration;
 using Hyperscale.Microcore.Hosting.HttpService;
 using Hyperscale.Microcore.ServiceDiscovery;
 using Hyperscale.Microcore.ServiceDiscovery.HostManagement;
-using Hyperscale.Microcore.ServiceDiscovery.Rewrite;
+using Hyperscale.Microcore.ServiceDiscovery.LoadBalancer;
 using Hyperscale.Microcore.ServiceProxy;
 using Hyperscale.Microcore.SharedLogic;
 using Hyperscale.Microcore.SharedLogic.Monitor;
@@ -36,8 +36,6 @@ using Ninject;
 using Ninject.Activation;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
-using ConsulClient = Hyperscale.Microcore.ServiceDiscovery.ConsulClient;
-using IConsulClient = Hyperscale.Microcore.ServiceDiscovery.IConsulClient;
 
 namespace Hyperscale.Microcore.Ninject
 {
@@ -50,7 +48,6 @@ namespace Hyperscale.Microcore.Ninject
     
         private readonly Type[] NonSingletonBaseTypes =
         {
-            typeof(ConsulDiscoverySource),
             typeof(RemoteHostPool),
             typeof(LoadBalancer),
             typeof(ConfigDiscoverySource)
@@ -74,24 +71,16 @@ namespace Hyperscale.Microcore.Ninject
             
             Bind<IRemoteHostPoolFactory>().ToFactory();
 
-            Kernel.BindPerKey<string, ReachabilityCheck, INewServiceDiscovery, NewServiceDiscovery>();
             Kernel.BindPerKey<string, ReachabilityChecker, IServiceDiscovery, ServiceDiscovery.ServiceDiscovery>();
             Kernel.BindPerString<IServiceProxyProvider, ServiceProxyProvider>();
             Kernel.BindPerString<AggregatingHealthStatus>();
 
-            Rebind<IServiceDiscoverySource>().To<ConsulDiscoverySource>().InTransientScope();
             Bind<IServiceDiscoverySource>().To<LocalDiscoverySource>().InTransientScope();
             Bind<IServiceDiscoverySource>().To<ConfigDiscoverySource>().InTransientScope();
 
-            Bind<INodeSourceFactory>().To<ConsulNodeSourceFactory>().InTransientScope();
             Bind<ILoadBalancer>().To<LoadBalancer>().InTransientScope();
             Bind<IDiscovery>().To<Discovery>().InSingletonScope();
-
-            Rebind<ServiceDiscovery.Rewrite.ConsulClient, ServiceDiscovery.Rewrite.IConsulClient>()
-                .To<ServiceDiscovery.Rewrite.ConsulClient>().InSingletonScope();            
             
-
-            Kernel.Rebind<IConsulClient>().To<ConsulClient>().InTransientScope();
             Kernel.Load<ServiceProxyModule>();
             Kernel.Load<ConfigObjectsModule>();
 

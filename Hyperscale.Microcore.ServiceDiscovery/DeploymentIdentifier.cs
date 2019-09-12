@@ -27,43 +27,24 @@ namespace Hyperscale.Microcore.ServiceDiscovery
 {
     public class DeploymentIdentifier
     {
-        /// <summary>The environment (e.g. "prod", "st1") of the service, if it's deployed in a specific environment (and
-        /// not per the whole zone). Null otherwise.</summary>
-        public string DeploymentEnvironment { get; } = null;
-
         /// <summary>The name of the service (e.g. "AccountsService").</summary>
         public string ServiceName { get; }
-
-        /// <summary>The zone of the service (e.g. "us1a").</summary>
-        public string Zone { get; }
-
-        /// <summary>
-        /// Whether this deployment identifier points to a service deployed for a specific environment, or is it deployed for all environments
-        /// </summary>
-        public bool IsEnvironmentSpecific => DeploymentEnvironment != null;
-
-        /// <summary>
-        /// Create a new identifier for a service which is deployed on current datacenter 
-        /// </summary>
-        public DeploymentIdentifier(string serviceName, string deploymentEnvironment, IEnvironment environment) : this(serviceName, deploymentEnvironment, environment.Zone) { }
 
         /// <summary>
         /// Create a new identifier for a service which is deployed on a different datacenter
         /// </summary>
-        public DeploymentIdentifier(string serviceName, string deploymentEnvironment, string zone)
+        public DeploymentIdentifier(string serviceName)
         {
-            DeploymentEnvironment = deploymentEnvironment?.ToLower();
-            if (serviceName == null || zone == null)
+            if (serviceName == null)
                 throw new ArgumentNullException();
             ServiceName = serviceName;
-            Zone = zone;
         }
 
         public override string ToString()
         {
-            var serviceAndEnv = IsEnvironmentSpecific ? $"{ServiceName}-{DeploymentEnvironment}" : ServiceName;
+            var serviceAndEnv = ServiceName;
 
-            return $"{serviceAndEnv} ({Zone})";
+            return $"{serviceAndEnv}";
         }
 
         public override bool Equals(object obj)
@@ -76,10 +57,7 @@ namespace Hyperscale.Microcore.ServiceDiscovery
 
             if (obj is DeploymentIdentifier other)
             {
-                if (Zone != other.Zone)
-                    return false;
-
-                return DeploymentEnvironment == other.DeploymentEnvironment && ServiceName == other.ServiceName;
+                return ServiceName == other.ServiceName;
             }
             else
                 return false;
@@ -90,8 +68,6 @@ namespace Hyperscale.Microcore.ServiceDiscovery
             unchecked
             {
                 var hashCode = ServiceName.GetHashCode();
-                hashCode = (hashCode * 397) ^ (DeploymentEnvironment?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ Zone.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,28 +20,29 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using System;
+using Hyperscale.Microcore.SharedLogic;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.Interfaces.SystemWrappers
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
-    public interface IEnvironment
+    /// <summary>
+    /// Returns the current computer as the sole node. Never changes.
+    /// </summary>
+    public class LocalNodeSource : INodeSource
     {
-        /// <summary>
-        /// The current Region this application runs in, e.g. "us1", "eu2".
-        /// Initialized from the environment variable "REGION".
-        /// </summary>
-        string Region { get; }
+        private static readonly Node[] _nodes;
 
-        /// <summary>
-        /// The current Zone this application runs in, e.g. "us1a" or "eu2c". Initialized from the environment variable "ZONE".
-        /// </summary>
-        string Zone { get; }
+        static LocalNodeSource()
+        {
+            _nodes = new []{new Node(CurrentApplicationInfo.HostName)};
+        }
 
-        /// <summary>
-        /// The current environment this application runs in, e.g. "prod", "st1" or "canary". Initialized from the environment variable "ENV".
-        /// </summary>        
-        string DeploymentEnvironment { get; }
+        public Node[] GetNodes() => _nodes;
 
-        string ConsulAddress { get; }
+        public void Dispose()
+        {
+            // nothing to shutdown            
+        }
     }
+
 }

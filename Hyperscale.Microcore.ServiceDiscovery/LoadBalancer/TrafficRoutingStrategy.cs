@@ -20,7 +20,7 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     /// <summary>
     /// Defines the strategy to use on LoadBalancer, for routing the traffic between the different nodes

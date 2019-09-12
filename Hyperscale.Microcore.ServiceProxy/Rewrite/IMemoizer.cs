@@ -25,7 +25,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Hyperscale.Microcore.ServiceProxy.Caching;
 
-namespace Hyperscale.Microcore.ServiceProxy.Rewrite
+namespace Hyperscale.Microcore.ServiceProxy.LoadBalancer
 {
     interface IMemoizer : IProxyable, IDisposable
     {

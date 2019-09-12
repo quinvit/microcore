@@ -9,10 +9,10 @@ using Hyperscale.Common.Contracts.HttpService;
 using Hyperscale.Microcore.SharedLogic;
 using Hyperscale.Microcore.SharedLogic.Events;
 using Hyperscale.Microcore.SharedLogic.HttpService;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 using Newtonsoft.Json;
 
-namespace Hyperscale.Microcore.ServiceProxy.Rewrite
+namespace Hyperscale.Microcore.ServiceProxy.LoadBalancer
 {
 	/// <summary>
 	/// This is a beta version. Please do not use it until it's ready
@@ -68,7 +68,7 @@ namespace Hyperscale.Microcore.ServiceProxy.Rewrite
                 
             }
 
-            return null;
+            return await Task.FromResult(default(object));
         }
 
         private HttpRequestMessage CreateHttpRequest(HttpServiceRequest request, JsonSerializerSettings jsonSettings, HostOverride node)

@@ -82,7 +82,6 @@ namespace Hyperscale.Microcore.Hosting.HttpService
         private ILog Log { get; }
         private IEventPublisher<ServiceCallEvent> EventPublisher { get; }
         private IEnumerable<ICustomEndpoint> CustomEndpoints { get; }
-        private IEnvironment Environment { get; }
         private JsonExceptionSerializer ExceptionSerializer { get; }
         private Func<LoadShedding> LoadSheddingConfig { get; }
 
@@ -90,7 +89,7 @@ namespace Hyperscale.Microcore.Hosting.HttpService
 
         public HttpServiceListener(IActivator activator, IWorker worker, IServiceEndPointDefinition serviceEndPointDefinition,
                                    ICertificateLocator certificateLocator, ILog log, IEventPublisher<ServiceCallEvent> eventPublisher,
-                                   IEnumerable<ICustomEndpoint> customEndpoints, IEnvironment environment,
+                                   IEnumerable<ICustomEndpoint> customEndpoints,
                                    JsonExceptionSerializer exceptionSerializer, 
                                    ServiceSchema serviceSchema,                                   
                                    Func<LoadShedding> loadSheddingConfig,
@@ -105,7 +104,6 @@ namespace Hyperscale.Microcore.Hosting.HttpService
             Log = log;
             EventPublisher = eventPublisher;
             CustomEndpoints = customEndpoints.ToArray();
-            Environment = environment;
             ExceptionSerializer = exceptionSerializer;
             LoadSheddingConfig = loadSheddingConfig;
 
@@ -391,8 +389,6 @@ namespace Hyperscale.Microcore.Hosting.HttpService
             context.Response.StatusCode = (int)httpStatus;
             context.Response.ContentLength64 = body.Length;
             context.Response.ContentType = contentType;
-            context.Response.Headers.Add(HSHttpHeaders.DataCenter, Environment.Zone);
-            context.Response.Headers.Add(HSHttpHeaders.Environment, Environment.DeploymentEnvironment);
             context.Response.Headers.Add(HSHttpHeaders.ServiceVersion, CurrentApplicationInfo.Version.ToString());
             context.Response.Headers.Add(HSHttpHeaders.ServerHostname, CurrentApplicationInfo.HostName);
             context.Response.Headers.Add(HSHttpHeaders.SchemaHash, ServiceSchema.Hash);

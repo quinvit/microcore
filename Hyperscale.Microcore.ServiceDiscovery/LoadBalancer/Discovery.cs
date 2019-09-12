@@ -29,9 +29,9 @@ using System.Threading.Tasks;
 using Hyperscale.Microcore.Interfaces.SystemWrappers;
 using Hyperscale.Microcore.ServiceDiscovery.Config;
 using Hyperscale.Microcore.SharedLogic.Exceptions;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
 
     /// <inheritdoc />

@@ -22,7 +22,7 @@
 
 using System.Reflection;
 
-namespace Hyperscale.Microcore.ServiceProxy.Rewrite
+namespace Hyperscale.Microcore.ServiceProxy.LoadBalancer
 {
     public interface IProxyable
     {

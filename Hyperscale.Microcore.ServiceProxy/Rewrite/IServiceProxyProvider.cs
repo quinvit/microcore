@@ -24,12 +24,12 @@ using System;
 using System.Threading.Tasks;
 using Hyperscale.Common.Contracts.HttpService;
 using Hyperscale.Microcore.ServiceDiscovery.HostManagement;
-using Hyperscale.Microcore.ServiceDiscovery.Rewrite;
+using Hyperscale.Microcore.ServiceDiscovery.LoadBalancer;
 using Hyperscale.Microcore.SharedLogic.HttpService;
 using Hyperscale.Microcore.SharedLogic.Utils;
 using Newtonsoft.Json;
 
-namespace Hyperscale.Microcore.ServiceProxy.Rewrite
+namespace Hyperscale.Microcore.ServiceProxy.LoadBalancer
 {
 	/// <summary>
 	/// This is a beta version. Please do not use it until it's ready

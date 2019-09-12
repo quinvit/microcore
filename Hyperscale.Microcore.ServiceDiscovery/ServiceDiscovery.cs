@@ -53,7 +53,6 @@ namespace Hyperscale.Microcore.ServiceDiscovery
         private List<IDisposable> _originatingEnvironmentLinks = new List<IDisposable>();
         private readonly DeploymentIdentifier _originatingDeployment;
 
-        private const string MASTER_ENVIRONMENT = "prod";
         private readonly string _serviceName;
         private readonly ReachabilityChecker _reachabilityChecker;
         private readonly IRemoteHostPoolFactory _remoteHostPoolFactory;
@@ -71,15 +70,14 @@ namespace Hyperscale.Microcore.ServiceDiscovery
                                 ReachabilityChecker reachabilityChecker,
                                 IRemoteHostPoolFactory remoteHostPoolFactory,
                                 IDiscoverySourceLoader serviceDiscoveryLoader,
-                                IEnvironment environment,
                                 ISourceBlock<DiscoveryConfig> configListener,
                                 Func<DiscoveryConfig> discoveryConfigFactory,
                                 ILog log)
         {
             Log = log;
             _serviceName = serviceName;
-            _originatingDeployment = new DeploymentIdentifier(serviceName, environment.DeploymentEnvironment, environment);
-            _masterDeployment = new DeploymentIdentifier(serviceName, MASTER_ENVIRONMENT, environment);
+            _originatingDeployment = new DeploymentIdentifier(serviceName);
+            _masterDeployment = new DeploymentIdentifier(serviceName);
 
             _reachabilityChecker = reachabilityChecker;
             _remoteHostPoolFactory = remoteHostPoolFactory;

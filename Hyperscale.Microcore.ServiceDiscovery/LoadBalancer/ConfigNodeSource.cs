@@ -26,9 +26,9 @@ using Hyperscale.Common.Contracts.Exceptions;
 using Hyperscale.Microcore.Interfaces.Logging;
 using Hyperscale.Microcore.ServiceDiscovery.Config;
 using Hyperscale.Microcore.ServiceDiscovery.HostManagement;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     /// <summary>
     /// Provides service nodes from configuration. Note: Currently nodes are not specified per environment; it is

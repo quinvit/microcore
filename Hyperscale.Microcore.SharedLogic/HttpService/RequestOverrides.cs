@@ -22,7 +22,7 @@
 
 using System;
 using System.Collections.Generic;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 using Newtonsoft.Json;
 
 namespace Hyperscale.Microcore.SharedLogic.HttpService

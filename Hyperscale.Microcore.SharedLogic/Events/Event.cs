@@ -47,7 +47,6 @@ namespace Hyperscale.Microcore.SharedLogic.Events
     /// </remarks>
     public class Event : IEvent
     {
-        public IEnvironment Environment { get; set; }
         public IStackTraceEnhancer StackTraceEnhancer { get; set; }
 
         public EventConfiguration Configuration { get; set; }
@@ -88,23 +87,6 @@ namespace Hyperscale.Microcore.SharedLogic.Events
 
         [EventField(EventConsts.infrVersion, OmitFromAudit = true)]
         public string InfraVersion => CurrentApplicationInfo.InfraVersion.ToString(4);
-
-        /// <summary>The value of the %REGION% environment variable. .</summary>
-        [EventField(EventConsts.runtimeREGION, OmitFromAudit = true)]
-        public string RuntimeRegion => Environment.Region;
-
-        /// <summary>The value of the %REGION% environment variable. .</summary>
-        [EventField(EventConsts.runtimeZONE, OmitFromAudit = true)]
-        public string RuntimeZone => Environment.Zone;
-
-        /// <summary>The value of the %DC% environment variable. .</summary>
-        [EventField(EventConsts.runtimeDC, OmitFromAudit = true)]
-        [Obsolete("Deprecate after 2018; use region instead")]
-        public string RuntimeDC => Environment.Zone;
-
-        /// <summary>The value of the %ENV% environment variable. </summary>
-        [EventField(EventConsts.runtimeENV, OmitFromAudit = true)]
-        public string RuntimeENV => Environment.DeploymentEnvironment;
 
         ///// <summary>The hostname of the server making the report</summary>    
         [EventField(EventConsts.runtimeHost)]

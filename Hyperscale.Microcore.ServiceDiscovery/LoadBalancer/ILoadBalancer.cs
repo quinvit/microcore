@@ -20,15 +20,27 @@
 // POSSIBILITY OF SUCH DAMAGE.
 #endregion
 
-using System.Threading;
+using System;
 using System.Threading.Tasks;
-using Hyperscale.Microcore.SharedLogic.Rewrite;
+using Hyperscale.Microcore.SharedLogic.LoadBalancer;
 
-namespace Hyperscale.Microcore.ServiceDiscovery.Rewrite
+namespace Hyperscale.Microcore.ServiceDiscovery.LoadBalancer
 {
     /// <summary>
-    /// Check if the specified node is reachable. 
-    /// Task should finish successfully if service is reachable, or throw a descriptive exception if it is not
-    /// </summary>    
-    public delegate Task ReachabilityCheck(Node node, CancellationToken cancellationToken);
+    /// Returns a one healthy-known node each time it is called. 
+    /// Executes balancing between a list of nodes it gets from a <see cref="INodeSource"/>.
+    /// </summary>
+    public interface ILoadBalancer: IDisposable
+    {
+        /// <summary>
+        /// Retrieves a node which is considered to be reachable.
+        /// Returns null if the service is not implemented in the requested environment
+        /// </summary>
+        Task<Node> GetNode();
+
+        /// <summary>
+        /// Report that a node was not responsive
+        /// </summary>
+        void ReportUnreachable(Node node, Exception ex = null);
+    }
 }

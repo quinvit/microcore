@@ -79,8 +79,7 @@ namespace Hyperscale.Microcore.ServiceDiscovery.HostManagement
                         unencryptedTags: new
                         {
                             endpoint = HostName,
-                            requestedService = HostPool.DeploymentIdentifier.ServiceName,
-                            requestedServiceEnvironment = HostPool.DeploymentIdentifier.DeploymentEnvironment
+                            requestedService = HostPool.DeploymentIdentifier.ServiceName
 
                         }));
 
@@ -145,8 +144,7 @@ namespace Hyperscale.Microcore.ServiceDiscovery.HostManagement
                         unencryptedTags: new
                         {
                             endpoint = HostName,
-                            requestedService = HostPool.DeploymentIdentifier.ServiceName,
-                            requestedServiceEnvironment = HostPool.DeploymentIdentifier.DeploymentEnvironment
+                            requestedService = HostPool.DeploymentIdentifier.ServiceName
                         }));
 				}
 
@@ -160,7 +158,6 @@ namespace Hyperscale.Microcore.ServiceDiscovery.HostManagement
 				{
 					endpoint = HostName,
                     requestedService = HostPool.DeploymentIdentifier.ServiceName,
-                    requestedServiceEnvironment = HostPool.DeploymentIdentifier.DeploymentEnvironment,
                     attemptCount,
 					nextDelay,
 					nextAttemptAt = DateTime.UtcNow + nextDelay,
@@ -187,7 +184,6 @@ namespace Hyperscale.Microcore.ServiceDiscovery.HostManagement
                         {
                             endpoint = HostName,
                             requestedService = HostPool.DeploymentIdentifier.ServiceName,
-                            requestedServiceEnvironment = HostPool.DeploymentIdentifier.DeploymentEnvironment,
                             attemptCount,
                             downtime = DateTime.UtcNow - start
                         }));

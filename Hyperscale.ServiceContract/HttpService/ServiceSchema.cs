@@ -101,9 +101,6 @@ namespace Hyperscale.Common.Contracts.HttpService
 
         public bool IsRevocable { get; set; }
 
-        [Obsolete("Use Response.TypeName instead")]
-        public string ResponseType { get; set; }
-
         public TypeSchema Response { get; set; }
 
         public AttributeSchema[] Attributes { get; set; }
@@ -135,7 +132,7 @@ namespace Hyperscale.Common.Contracts.HttpService
                 Response = new TypeSchema(info.ReturnType, info.ReturnType.GetCustomAttributes());
             }
 
-            ResponseType = Response?.TypeName;
+            Response.TypeName = Response?.TypeName;
             Parameters = info.GetParameters().Select(p => new ParameterSchema(p)).ToArray();
             Attributes = info
                 .GetCustomAttributes()
