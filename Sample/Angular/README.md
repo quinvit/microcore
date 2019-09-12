@@ -1,6 +1,6 @@
 # Introduction
 
-This is demonstration of basic example of single page angular application and microservice architecture.
+This is demonstration of basic example of single page Angular application and microservice architecture.
 Angular application uses adal-angular4 to authenticate Azure Active Directory users. 
 You can use sample users 
 - dev0001@quioutlookcom.onmicrosoft.com/HVN@Welc0meHVN@Welc0me
@@ -13,13 +13,13 @@ Angular application -> API Gateway -> ReportService (to retrieve fake report dat
 
 The database access and ***Register*** feature to demo auto-register user in Azure Active Directory is comming soon.
 
-The commnunication between microservices is asynchronous HTTP and is handled by https://github.com/quinvit/microcore library. The library covers network call, serialization/deserialization, contract mapping. We only use microservice by using DI to inject service interface to constructor as in-process service injection.
+The communication between microservices is asynchronous HTTP and is handled by https://github.com/quinvit/microcore library. The library covers network call, serialization/deserialization, contract mapping. We only use microservice by using DI to inject service interface to constructor as in-process service injection.
 
 ![Architecture](gateway.png)
 
 # Contents
 
-1. time-tracker-ui folder contains sample code of angular application.
+1. time-tracker-ui folder contains sample code of Angular application.
 2. TimeTrackerAPI folder contains sample code of API Gateway
 3. Services folder contains sample code of two simple microservices.
 
@@ -86,7 +86,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-The backend API code in API Gateway:
+Inject remote service to the backend API code in API Gateway:
 ```
 [Authorize]
 [Route("api/[controller]")]
