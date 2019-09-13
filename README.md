@@ -1,10 +1,12 @@
-# microcore
+# Introduction
+
 A port of https://github.com/gigya/microdot framework to .net core 2.2 with some changes:
 
 1. Replace NLog by https://serilog.net/
 2. Remove Orleans dependencies
 3. Remove Window Service feature to fully compatible in linux/container environment
-3. Replace Metrics.NET by https://www.app-metrics.io/
+4. Replace Metrics.NET by https://www.app-metrics.io/
+
 
 Original features:
 
@@ -17,3 +19,7 @@ inter-service RPC allowing services to call one another. Each service exposes on
 6. Detailed Health Checks are provided for each subsystem, and can easily be extended to cover your service's external dependencies.
 7. A hierarchical configuration system based on XML files which allows overriding values based on where and how the microservice is hosted. The configuration is consumed from code via strongly-typed objects with automatic mapping and is refreshed at real time when XML files change.
 8. Highly modular design and first-class dependency injection support using Ninject, allowing you to swap out every component with your own implementation if needed.
+
+# Sample
+
+[Angular with MSA on Azure](https://github.com/quinvit/microcore/tree/master/Sample/Angular)
