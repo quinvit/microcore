@@ -32,12 +32,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.12" />
-    <PackageReference Include="Hyperscale.Microcore.Hosting" Version="1.0.8" />
-    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.8" />
-    <PackageReference Include="Hyperscale.Microcore.Ninject.Host" Version="1.0.8" />
-    <PackageReference Include="Hyperscale.Microcore.Ninject" Version="1.0.8" />
-    <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.8" />
-    <PackageReference Include="Hyperscale.Microcore.ServiceProxy" Version="1.0.8" />
+    <PackageReference Include="Hyperscale.Microcore.Hosting" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.Microcore.Logging.Serilog" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.Microcore.Ninject.Host" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.Microcore.Ninject" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.Microcore.ServiceProxy" Version="1.0.9" />
   </ItemGroup>
 
   <ItemGroup>

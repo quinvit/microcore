@@ -5,7 +5,7 @@
     <RuntimeFrameworkVersion>2.2.0</RuntimeFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Hyperscale.Microcore.Interfaces" Version="1.0.4" />
-    <PackageReference Include="Hyperscale.ServiceContract" Version="1.0.4" />
+    <PackageReference Include="Hyperscale.Microcore.Interfaces" Version="1.0.9" />
+    <PackageReference Include="Hyperscale.ServiceContract" Version="1.0.9" />
   </ItemGroup>
 </Project>
