@@ -18,9 +18,15 @@ namespace ReportService
             Environment.SetEnvironmentVariable("HS_CONFIG_ROOT", Environment.CurrentDirectory);
             CurrentApplicationInfo.Init("TimeTracker-ReportService");
 
+            IConfiguration config = new ConfigurationBuilder()
+              .AddJsonFile("appsettings.json", true, true)
+              .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true, true)
+              .AddEnvironmentVariables()
+              .Build();
+
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
-                Task.Factory.StartNew(() => new ReportServiceHost().Run(), TaskCreationOptions.AttachedToParent)
+                Task.Factory.StartNew(() => CreateWebHostBuilder(args).Build().Run(), TaskCreationOptions.AttachedToParent)
                     .ContinueWith(task =>
                     {
                         if (task.IsFaulted)
@@ -28,12 +34,9 @@ namespace ReportService
                             Console.WriteLine(task.Exception.ToString());
                         }
                     });
-                CreateWebHostBuilder(args).Build().Run();
             }
-            else
-            {
-                new ReportServiceHost().Run();
-            }
+
+            new ReportServiceHost(config).Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

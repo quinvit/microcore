@@ -1,6 +1,6 @@
 .container{
     padding: 20px;
-    .register-form{
+    .keyin-form{
         .row{
             margin-bottom: 20px;            
               h3{
@@ -12,10 +12,15 @@
             background-color: #FAFAFA;
         }
     }
-    mat-form-field{
-        min-width: 48%;
+    .task{
+        min-width: 60%;
     }
-    .social{
-        min-width: auto;
+
+    .duration{
+        min-width: 10%;
+    }
+
+    mat-form-field[hidden] {
+        display: none;
     }
 }

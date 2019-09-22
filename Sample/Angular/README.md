@@ -22,7 +22,7 @@ In angular frontend, we simply use adal-angular4 library to authenticate agains
 })
 export class ReportsComponent implements OnInit {
 
-    displayedColumns: string[] = ['name', 'totalMinutes', 'dayInMonth', "email"];
+    displayedColumns: string[] = ['tasks', 'totalMinutes', 'day'];
     dataSource = ELEMENT_DATA;
 
     constructor(private http: HttpClient) { }
@@ -38,7 +38,6 @@ export class ReportsComponent implements OnInit {
 For more detail about this library, please take a look at this article https://adrianszen.com/2019/02/19/angular-with-azure-active-directory-authentication-adal-angular4/.
 
 To start angular application, type ***ng serve*** in terminal.
-
 ![VsCode](vs_code_angular.png)
 
 Register micro-services in Discovery.config:
@@ -102,23 +101,25 @@ public class ReportsController : ControllerBase
 ```
 
 To start backend API Gateway and micro-services at local, just run these projects in Visual Studio 2019:
-
 ![VsStudio](vs_demo.png)
 
 Here is how it works:
-
 ![Console Windows](console_demo.png)
 
 You can use sample users 
 - dev0001@quioutlookcom.onmicrosoft.com/HVN@Welc0meHVN@Welc0me
 - dev0002@quioutlookcom.onmicrosoft.com/HVN@Welc0meHVN@Welc0me
 
-After login, click on ***Timesheet*** menu to retrieve data from server. Here is the data flow:
-Angular application -> API Gateway -> ReportService (to retrieve fake report data) -> AuthService (to fullfil user name and email for report data).
-The database access and ***Register*** feature to demo auto-register user in Azure Active Directory is coming soon.
+After login, click on Timesheet menu to retrieve data from server. Here is the data flow:
 
-Finally, this is how the application looks like:
+Angular application
+    -> API Gateway
+        -> ReportService (retrieve report data in azure table )
+            -> AuthService (retrieve logged-in user information
+        -> AuthService (add registration information to azure table)
+            -> Push a message to azure queue to trigger azure login apps to create AD user and send email with initial password
 
+To run and store data locally, we need to run Azure Storage Emulator. Finally, after login to demo users, this is how the application looks like:
 ![Application](chrome_demo.png)
 
 The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. For the angular dist, we simply put all output files of ***ng build --prod*** result to an Azure Storage with enabled Static Website feature.

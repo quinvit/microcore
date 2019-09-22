@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { AdalService } from 'adal-angular4';
 import { Router } from '@angular/router';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import { NotificationService } from '../notification.service';
+
 
 @Component({
   selector: 'toolbar',
@@ -12,27 +14,36 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private router: Router, 
     @Inject(LOCAL_STORAGE) private storage: StorageService,
-    private adalService: AdalService) { }
+    private _notificationService: NotificationService,
+    private _adalService: AdalService) { 
+    }
 
   ngOnInit() {
-    this.adalService.handleWindowCallback();
-    console.log(this.adalService.userInfo);
+    this._adalService.handleWindowCallback();
+    console.log(this._adalService.userInfo);
   }
 
   login() {
-    this.router.navigateByUrl("/reports");
+      this.storage.set('afterLoginUrl', '/reports');
+      this.router.navigateByUrl('/');
+      this._adalService.login();
   }
 
   logout() {
     this.storage.clear();
-    this.adalService.logOut();
+    this._adalService.logOut();
   }
 
   get authenticated(): boolean {
-    return this.adalService.userInfo.authenticated;
+    var authenticated = this._adalService.userInfo.authenticated;
+    if(authenticated != this._notificationService.authenticated){
+      this._notificationService.loggedSubject.next(authenticated);
+      this._notificationService.authenticated = authenticated;
+    }
+    return authenticated;
   }
 
   get userInfo(): any {
-    return this.adalService.userInfo;
+    return this._adalService.userInfo;
   }
 }

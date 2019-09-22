@@ -4,6 +4,7 @@ import { ToolbarComponent } from './toolbar.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AdalService } from 'adal-angular4';
+import { HttpHandler } from '@angular/common/http';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -13,7 +14,7 @@ describe('ToolbarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ToolbarComponent ],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [AdalService],
+      providers: [AdalService, HttpHandler],
       imports: [RouterTestingModule.withRoutes([])]
     })
     .compileComponents();

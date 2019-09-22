@@ -18,22 +18,25 @@ namespace AuthService
             Environment.SetEnvironmentVariable("HS_CONFIG_ROOT", Environment.CurrentDirectory);
             CurrentApplicationInfo.Init("TimeTracker-AuthService");
 
+            IConfiguration config = new ConfigurationBuilder()
+              .AddJsonFile("appsettings.json", true, true)
+              .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true, true)
+              .AddEnvironmentVariables()
+              .Build();
+
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
-                Task.Factory.StartNew(() => new AuthServiceHost().Run(), TaskCreationOptions.AttachedToParent)
-                    .ContinueWith(task => 
+                Task.Factory.StartNew(() => CreateWebHostBuilder(args).Build().Run(), TaskCreationOptions.AttachedToParent)
+                    .ContinueWith(task =>
                     {
-                        if(task.IsFaulted)
+                        if (task.IsFaulted)
                         {
                             Console.WriteLine(task.Exception.ToString());
                         }
                     });
-                CreateWebHostBuilder(args).Build().Run();
             }
-            else
-            {
-                new AuthServiceHost().Run();
-            }
+
+            new AuthServiceHost(config).Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

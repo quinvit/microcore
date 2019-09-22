@@ -15,8 +15,5 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.storage.has("afterLoginUrl")) {
-      this.router.navigateByUrl(this.storage.get("afterLoginUrl"));
-    }
   }
 }

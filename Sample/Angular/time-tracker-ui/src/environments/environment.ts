@@ -9,9 +9,9 @@ export const environment = {
     clientId: '14b6b257-2e56-4994-9c40-51e2cc03fa19',
     endpoints: {
       'https://graph.microsoft.com': '00000003-0000-0000-c000-000000000000',
-      'http://localhost:5000': '14b6b257-2e56-4994-9c40-51e2cc03fa19'
+      'https://localhost:5001': '14b6b257-2e56-4994-9c40-51e2cc03fa19'
     },
-    apiGateway: 'http://localhost:5000'
+    apiGateway: 'https://localhost:5001'
   }
 };
 

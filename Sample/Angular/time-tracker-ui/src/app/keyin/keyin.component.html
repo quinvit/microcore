@@ -1,0 +1,44 @@
+<div [style.padding.px]="10">
+    <h2 class="mat-h2">📝 Today </h2>
+    <mat-card>
+        <mat-card-content class="container">
+            <form class="keyin-form" [formGroup]="keyin" (ngSubmit)="onSubmit()">
+                <!-- fxLayout="row" fxLayoutGap="20px" -->
+                <div>
+                    <div fxLayout="column">
+                        <div formArrayName="records" fxLayout="column" fxLayoutAlign="center stretch" class="row">
+                            <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+                                <label class="task">Task description</label>
+                                <label class="duration">Total minutes</label>
+                            </div>
+                            <div *ngFor="let element of timeRecordFields.controls; let i=index" [formGroupName]="i" fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+                                <mat-form-field class="task">
+                                    <input matInput type="text" formControlName="description" required>
+                                </mat-form-field>
+                                <mat-form-field class="duration">
+                                    <input matInput type="number" formControlName="totalMinutes" required>
+                                </mat-form-field>
+                                <i *ngIf="element.value.modifiedTime" class="material-icons">done</i>
+
+                                <mat-form-field hidden="true">
+                                    <input matInput formControlName="recordedTime" hidden="true">
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button type="button" mat-button (click)="addTimeRecords()"> 
+                        <mat-icon> note_add </mat-icon> 
+                        New record
+                    </button>
+
+                    <button type="submit" mat-button> 
+                        <mat-icon> cloud_upload </mat-icon> 
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

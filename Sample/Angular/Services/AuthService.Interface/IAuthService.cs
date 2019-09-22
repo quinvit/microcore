@@ -9,5 +9,7 @@ namespace AuthService.Interface
     public interface IAuthService
     {
         Task<User> GetUserAsync(string token);
+
+        Task<bool> RegisterUserAsync(User user);
     }
 }

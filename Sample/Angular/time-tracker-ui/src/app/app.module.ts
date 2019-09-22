@@ -20,22 +20,20 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SideNavComponent } from "./side-nav/side-nav.component";
-import { LocationComponent } from "./location/location.component";
 import { RegisterComponent } from './register/register.component';
-import { StepperComponent } from './register/stepper/stepper.component';
 import { ReportsComponent } from './reports/reports.component';
+import { KeyinComponent } from './keyin/keyin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    LocationComponent,
     ReportsComponent,
     SideNavComponent,
     ToolbarComponent,
     RegisterComponent,
-    StepperComponent
+    KeyinComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'time-tracker-ui';
+  title = 'TimeTracker';
 
   constructor(private adalService: AdalService) {
     adalService.init(environment.config);

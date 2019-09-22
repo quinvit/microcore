@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { AdalService } from 'adal-angular4';
+import { NotificationService } from '../notification.service';
 
 @Component({
     selector: 'nav-items',
@@ -16,24 +17,32 @@ import { AdalService } from 'adal-angular4';
 export class SideNavComponent {
     items = [];
 
-    constructor(private router: Router, private adalService: AdalService) {
+    constructor(private router: Router, private adalService: AdalService, private _notificationService: NotificationService) {
+        this.render();
+        this._notificationService.loggedSubject.subscribe(x => this.render());
+    }
+
+    render(){
         this.items = [
             {
                 title: 'Timesheet',
-                icon: 'bar_chart',
-                route: 'reports'
-            },
-            {
-                title: 'Location',
-                icon: 'location_city',
-                route: 'location'
+                icon: 'history',
+                route: 'reports',
+                requiredAuthenticated: true
             },
             {
                 title: 'Register',
                 icon: 'person_add',
-                route: 'register'
+                route: 'register',
+                requiredAuthenticated: false
+            },
+            {
+                title: 'About me',
+                icon: 'sentiment_satisfied_alt',
+                route: 'home',
+                requiredAuthenticated: true
             }
-        ];
+        ].filter(x => x.requiredAuthenticated == this.authenticated);
     }
 
     get authenticated(): boolean {

@@ -15,7 +15,8 @@ import {
   MatSlideToggleModule,
   MatTableModule,
   MatToolbarModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 const CommonModules = [
@@ -32,7 +33,8 @@ const CommonModules = [
   MatSlideToggleModule,
   MatTableModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

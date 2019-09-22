@@ -8,6 +8,10 @@ namespace ReportService.Interface
     [HttpService(80)]
     public interface IReportService
     {
-        Task<DailyTimeByUser[]> GetMonthlyReportByUserAsync(string token);
+        Task<bool> RegisterTimeRecordsAsync(string token, TimeRecord[] timeRecords);
+
+        Task<DailyTimeByUser[]> GetMonthlyReportByUserAsync(string token, int year);
+
+        Task<TimeRecord[]> GetTimeRecordsReportByUserAsync(string token, DateTime datetime);
     }
 }

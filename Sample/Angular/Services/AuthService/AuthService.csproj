@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
     
@@ -34,10 +35,13 @@
     <PackageReference Include="Hyperscale.Microcore.Ninject" Version="1.0.9" />
     <PackageReference Include="Hyperscale.Microcore.ServiceDiscovery" Version="1.0.9" />
     <PackageReference Include="Hyperscale.Microcore.ServiceProxy" Version="1.0.9" />
+    <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.5" />
+    <PackageReference Include="Microsoft.Azure.Storage.Queue" Version="11.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AuthService.Interface\AuthService.Interface.csproj" />
+    <ProjectReference Include="..\AzureStorage\AzureStorage.csproj" />
   </ItemGroup>
 
 </Project>
