@@ -1,6 +1,6 @@
 # Introduction
 
-A port of https://github.com/gigya/microdot framework to .net core 2.2 with some changes:
+A forked version of https://github.com/gigya/microdot framework to .net core 2.2 with some changes:
 
 1. Replace NLog by https://serilog.net/
 2. Remove Orleans dependencies
