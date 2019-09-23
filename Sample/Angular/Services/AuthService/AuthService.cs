@@ -98,7 +98,8 @@ namespace AuthService
         {
             try
             {
-                user.Username = user.Email;
+                user.Username = string.Concat(user.Email.Split('@').First(), "@", _configuration.GetValue<string>("AzureAd:Domain"));
+
                 var entity = new UserEntity(user);
                 var table = await TableStorage.CreateTableAsync(_configuration, UserTableName);
 
