@@ -12,15 +12,23 @@ namespace TimeTrackerAPI
 {
     public class Program
     {
+        static List<string> urls = new List<string>();
         public static void Main(string[] args)
         {
             Environment.SetEnvironmentVariable("HS_CONFIG_ROOT", Environment.CurrentDirectory);
+
+            urls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS")?.Split(';').ToList();
+            if (int.TryParse(Environment.GetEnvironmentVariable("PORT"), out int port))
+            {
+                urls.Add($"http://0.0.0.0:{port}");
+            }
 
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls(urls.ToArray())
                 .UseStartup<Startup>();
     }
 }

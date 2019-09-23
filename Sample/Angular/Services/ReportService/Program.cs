@@ -36,7 +36,15 @@ namespace ReportService
                     });
             }
 
-            new ReportServiceHost(config).Run();
+            var host = new ReportServiceHost(config);
+            if (int.TryParse(Environment.GetEnvironmentVariable("PORT"), out int envPort))
+            {
+                host.Run(new ServiceArguments(basePortOverride: envPort));
+            }
+            else
+            {
+                host.Run();
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
