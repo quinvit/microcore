@@ -136,7 +136,7 @@ To run and store data locally, we need to run Azure Storage Emulator. Finally, a
 
 ![Application](chrome_demo.png)
 
-The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. The secure our microservices that are hosted under azure web app, we need to use a Virtual Network with enabled Service Endpoint, join our azure web app to that Virtual Network and then restrict all external access to the web app, except the requests that come from our Virtual Network.
+The API Gateway and microservices are deployed to Azure Web App (Linux docker container mode) in order we can easily scale up or scale out any service. On the other hand, hosting microservice in Azure Web App is much cheaper than on VM or AKS. To secure our microservices that are hosted under azure web app, we need to use a Virtual Network with enabled Service Endpoint, join our azure web app to that Virtual Network and then restrict all external access to the web app, except the requests that come from our Virtual Network.
 
 For the angular dist, we simply put all output files of ***ng build --prod*** result to an Azure Storage with enabled Static Website feature.
 
