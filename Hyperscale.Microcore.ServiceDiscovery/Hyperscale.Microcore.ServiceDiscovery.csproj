@@ -8,7 +8,7 @@
     <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>
     <Description>Hyperscale.Microcore</Description>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE.txt">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

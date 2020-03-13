@@ -8,15 +8,15 @@
     <PackageProjectUrl>https://github.com/quinvit/microcore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/quinvit/microcore</RepositoryUrl>
     <Description>Hyperscale.ServiceContract</Description>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\LICENSE.txt">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

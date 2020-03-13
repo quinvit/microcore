@@ -19,6 +19,7 @@ using Hyperscale.Microcore.Logging.Serilog;
 using ReportService.Interface;
 using AuthService.Interface;
 using Serilog;
+using Microsoft.OpenApi.Models;
 
 namespace TimeTrackerAPI
 {
@@ -50,21 +51,35 @@ namespace TimeTrackerAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "time-tracker API v1", Version = "v1" });
-                var security = new Dictionary<string, IEnumerable<string>>
-                {
-                    {"Bearer", new string[] { }},
-                };
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "time-tracker API v1", Version = "v1" });
 
-                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
                 });
 
-                c.AddSecurityRequirement(security);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+
+                        },
+                        new List<string>()
+                    }
+                });
             });
 
             services.AddCors(options =>
