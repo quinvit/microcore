@@ -20,8 +20,8 @@ export class RegisterComponent implements OnInit {
 
   initForm() {
     this.register = this.fb.group({
-      firstName: [''],
-      lastName: [''],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email, Validators.minLength(5)]],
       company: [''],
       yearsOfExperience: ['', Validators.maxLength(2)],

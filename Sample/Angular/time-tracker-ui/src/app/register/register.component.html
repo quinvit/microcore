@@ -11,13 +11,16 @@
                 <mat-form-field>
                   <input matInput placeholder="First name" formControlName="firstName">
                   <mat-icon matSuffix>face</mat-icon>
-                  <mat-error *ngIf="register.get('firstName').hasError('required')">
+                  <mat-error *ngIf="register.get('firstName').hasError('required') && register.get('firstName').touched">
                     First name is required
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Last name" formControlName="lastName">
                   <mat-icon matSuffix>face</mat-icon>
+                  <mat-error *ngIf="register.get('lastName').hasError('required') && register.get('lastName').touched">
+                    Last name is required
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
