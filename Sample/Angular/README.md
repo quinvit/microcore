@@ -109,12 +109,8 @@ Here is how it works:
 
 ![Console Windows](console_demo.png)
 
-You can use sample users 
-- dev0001@quioutlookcom.onmicrosoft.com/HVN@Welc0meHVN@Welc0me
-- dev0002@quioutlookcom.onmicrosoft.com/HVN@Welc0meHVN@Welc0me
 
-After login, click on Timesheet menu to retrieve data from server. Here is the data flow:
-
+After register, activate your account and login, click on Timesheet menu to retrieve data from server. Here is the data flow:
 
 - -> Angular application
 
@@ -144,4 +140,4 @@ For the angular dist, we simply put all output files of ***ng build --prod*** re
 
 ![Sample](sample.png)
 
-Try final result [here](https://quinvit.z23.web.core.windows.net)
+Try final result [here](https://timetracker2.z7.web.core.windows.net/)

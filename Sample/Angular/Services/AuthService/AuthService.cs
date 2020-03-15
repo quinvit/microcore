@@ -49,6 +49,11 @@ namespace AuthService
                 TableResult result = await table.ExecuteAsync(retrieveOperation);
                 UserEntity user = result.Result as UserEntity;
 
+                if(user == null)
+                {
+                    Log.Logger.Error("Cannot find user {firstName}, {username}.", firstName, username);
+                }
+
                 return _mapper.Map<UserEntity, User>(user);
             }
             catch (StorageException e)
@@ -98,7 +103,8 @@ namespace AuthService
         {
             try
             {
-                user.Username = string.Concat(user.Email.Split('@').First(), "@", _configuration.GetValue<string>("AzureAd:Domain"));
+                var identity = user.Email.Replace('@', '_');
+                user.Username = string.Concat(identity, "@", _configuration.GetValue<string>("AzureAd:Domain"));
 
                 var entity = new UserEntity(user);
                 var table = await TableStorage.CreateTableAsync(_configuration, UserTableName);

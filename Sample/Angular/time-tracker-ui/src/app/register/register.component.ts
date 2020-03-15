@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     control.push(this.getLinkControl());
   }
 
-  onRegister() {  
+  onRegister() {
     var user = Object.assign({}, this.register.value);
 
     // Projection object[] to string[] by url property
@@ -54,11 +54,11 @@ export class RegisterComponent implements OnInit {
     var delay = 4000;
     this.http.post(`${environment.config.apiGateway}/api/users`, user)
       .subscribe(x => {
-        this._snackBar.open(x === true ? 'Register success, please check your mailbox for further instruction' : 'Register failed, please try again later', 'OK', {
+        this._snackBar.open(x === true ? 'Register success, please check your mailbox for further instruction' : 'Register failed, please try again with another email account.', 'OK', {
           duration: delay,
         });
       }, error => {
-        this._snackBar.open('Error, please try again later', 'OK', {
+        this._snackBar.open('Register failed, please try again with another email account.', 'OK', {
           duration: delay,
         });
       });

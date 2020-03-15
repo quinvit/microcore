@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.AzureAD.UI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using System;
 
 namespace ReportService
 {
@@ -17,6 +18,8 @@ namespace ReportService
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
+
+            Log.Logger.Information("Startup {datetime}", DateTime.UtcNow);
         }
 
         public IConfiguration Configuration { get; }

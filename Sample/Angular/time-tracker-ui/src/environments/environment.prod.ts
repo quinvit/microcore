@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   config: {
-    tenant: '2bac2706-6fdc-46af-93aa-02f86134156d',
-    clientId: '14b6b257-2e56-4994-9c40-51e2cc03fa19',
+    tenant: 'b52ff9c5-51e1-4616-956e-12104cbe15b0',
+    clientId: 'ca7a993d-e75a-420c-be49-be4f8b90d76a',
     endpoints: {
       'https://graph.microsoft.com': '00000003-0000-0000-c000-000000000000',
-      'https://timetrackerapi.azurewebsites.net': '14b6b257-2e56-4994-9c40-51e2cc03fa19'
+      'https://timetrackerapi2.azurewebsites.net': 'ca7a993d-e75a-420c-be49-be4f8b90d76a'
     },
-    apiGateway: 'https://timetrackerapi.azurewebsites.net'
-  } 
+    apiGateway: 'https://timetrackerapi2.azurewebsites.net'
+  }
 };

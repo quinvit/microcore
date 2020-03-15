@@ -167,6 +167,7 @@ namespace ReportService
 
             if (user == null)
             {
+                Log.Logger.Error("Cannot find user with provided token.");
                 return false;
             }
 
