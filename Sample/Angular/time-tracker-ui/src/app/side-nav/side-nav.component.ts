@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { AdalService } from 'adal-angular4';
 import { NotificationService } from '../notification.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
     selector: 'nav-items',
@@ -17,7 +18,11 @@ import { NotificationService } from '../notification.service';
 export class SideNavComponent {
     items = [];
 
-    constructor(private router: Router, private adalService: AdalService, private _notificationService: NotificationService) {
+    constructor(
+      private router: Router,
+      private adalService: AdalService,
+      private _notificationService: NotificationService,
+      private _layoutService: LayoutService) {
         this.render();
         this._notificationService.loggedSubject.subscribe(x => this.render());
     }
@@ -50,6 +55,7 @@ export class SideNavComponent {
     }
 
     goTo(route: string) {
+      this._layoutService.decrease();
         this.router.navigate([route]);
     }
 

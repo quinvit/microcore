@@ -3,6 +3,7 @@ import { AdalService } from 'adal-angular4';
 import { Router } from '@angular/router';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { NotificationService } from '../notification.service';
+import { LayoutService } from '../layout.service';
 
 
 @Component({
@@ -12,15 +13,23 @@ import { NotificationService } from '../notification.service';
 })
 export class ToolbarComponent implements OnInit {
   constructor(
-    private router: Router, 
+    private router: Router,
     @Inject(LOCAL_STORAGE) private storage: StorageService,
     private _notificationService: NotificationService,
-    private _adalService: AdalService) { 
+    private _adalService: AdalService,
+    private _layoutService: LayoutService) {
     }
 
   ngOnInit() {
     this._adalService.handleWindowCallback();
-    console.log(this._adalService.userInfo);
+    // console.log(this._adalService.userInfo);
+  }
+
+  toggleSidenav(){
+    if(this._layoutService.sidenavWidth == 0) {
+      this._layoutService.increase();
+    }
+    else this._layoutService.decrease();
   }
 
   login() {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdalService } from 'adal-angular4';
 import { environment } from '../environments/environment';
+import { LayoutService } from './layout.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,7 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'TimeTracker';
 
-  sidenavWidth = 4;
-  increase(){
-    this.sidenavWidth = 15;
+  constructor(private _adalService: AdalService, public _layoutService: LayoutService) {
+    _adalService.init(environment.config);
   }
-
-  decrease(){
-    this.sidenavWidth = 4;
-  }
-
-  constructor(private adalService: AdalService) {
-    adalService.init(environment.config);
-  }
-
 }

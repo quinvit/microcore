@@ -23,6 +23,7 @@ import { SideNavComponent } from "./side-nav/side-nav.component";
 import { RegisterComponent } from './register/register.component';
 import { ReportsComponent } from './reports/reports.component';
 import { KeyinComponent } from './keyin/keyin.component';
+import { BuyMeCoffeeComponent } from './buy-me-coffee/buy-me-coffee.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { KeyinComponent } from './keyin/keyin.component';
     SideNavComponent,
     ToolbarComponent,
     RegisterComponent,
-    KeyinComponent
+    KeyinComponent,
+    BuyMeCoffeeComponent
   ],
   imports: [
     BrowserModule,
