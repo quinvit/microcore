@@ -1,7 +1,7 @@
 <keyin></keyin>
 <br>
 <div [style.padding.px]="10">
-    <h2 class="mat-h2">📆 Current Year </h2>
+    <h2 class="mat-h2">📆 Current month </h2>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!--- Note that these columns can be defined in any order.
@@ -10,7 +10,7 @@
         <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef> Task description </th>
             <td mat-cell *matCellDef="let element">
-                <ul>
+                <ul class="task-list">
                     <li *ngFor="let task of element.tasks">
                         {{ task }}
                     </li>
@@ -25,8 +25,8 @@
 
         <ng-container matColumnDef="dayInMonth">
             <th mat-header-cell *matHeaderCellDef> Day </th>
-            <td mat-cell *matCellDef="let element"> 
-                {{element.monthInYear | number:'2.0-0' }} - {{element.dayInMonth | number:'2.0-0'}} 
+            <td mat-cell *matCellDef="let element">
+                {{element.monthInYear | number:'2.0-0' }} - {{element.dayInMonth | number:'2.0-0'}}
             </td>
         </ng-container>
 

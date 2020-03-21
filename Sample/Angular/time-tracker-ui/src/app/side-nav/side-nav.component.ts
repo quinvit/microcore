@@ -52,4 +52,5 @@ export class SideNavComponent {
     goTo(route: string) {
         this.router.navigate([route]);
     }
+
 }

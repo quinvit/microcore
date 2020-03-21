@@ -76,7 +76,7 @@ namespace ReportService
                     TotalMinutes = g.Sum(r => r.TotalMinutes),
                     DayInMonth = g.First().RecordedTime.Value.Day,
                     MonthInYear = g.First().RecordedTime.Value.Month
-                }).ToArray();
+                }).OrderByDescending(x => x.DayInMonth).ToArray();
 
                 return records;
             }

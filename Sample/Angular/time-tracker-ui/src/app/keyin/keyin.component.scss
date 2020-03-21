@@ -1,11 +1,12 @@
 .container{
     padding: 20px;
     .keyin-form{
+      font-size: 12px;
         .row{
-            margin-bottom: 20px;            
+            margin-bottom: 20px;
               h3{
                   margin-bottom: 10px !important;
-              }              
+              }
         }
         pre{
             width: 300px;
@@ -18,6 +19,12 @@
 
     .duration{
         min-width: 10%;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(0,0,0,.54);
     }
 
     mat-form-field[hidden] {

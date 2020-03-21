@@ -1,12 +1,9 @@
 mat-sidenav-container{
   margin-top: 64px;
-  .sidenav {
-      width: 288px; 
-  }
   .container{
-      margin: 10px;
-      padding: 15px;        
-      background-color: #fff;
-      background-size: 70% auto;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
   }
 }

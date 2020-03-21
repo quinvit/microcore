@@ -10,6 +10,15 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'TimeTracker';
 
+  sidenavWidth = 4;
+  increase(){
+    this.sidenavWidth = 15;
+  }
+
+  decrease(){
+    this.sidenavWidth = 4;
+  }
+
   constructor(private adalService: AdalService) {
     adalService.init(environment.config);
   }

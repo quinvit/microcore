@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
-    <span *ngIf="authenticated">Welcome <strong> {{userInfo.profile.name}} </strong></span>
-  
+    <span *ngIf="authenticated"> ✅ <strong> {{userInfo.profile.given_name}} {{userInfo.profile.family_name}}</strong></span>
+
     <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
     <span *ngIf="!authenticated" (click)="login()">

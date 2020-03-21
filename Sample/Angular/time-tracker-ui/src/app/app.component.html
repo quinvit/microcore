@@ -1,10 +1,11 @@
 <toolbar></toolbar>
 
 <mat-sidenav-container fullscreen>
-    <mat-sidenav #sidenav class="sidenav mat-elevation-z4" mode="side" opened="true">
-      <nav-items></nav-items>
-    </mat-sidenav>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
+  <mat-sidenav #sidenav class="sidenav mat-elevation-z4" mode="side" [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true" (mouseenter)="increase()" (mouseleave)="decrease()">
+    <nav-items></nav-items>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

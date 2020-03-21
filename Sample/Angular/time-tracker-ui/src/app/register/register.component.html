@@ -11,7 +11,8 @@
                 <mat-form-field>
                   <input matInput placeholder="First name" formControlName="firstName">
                   <mat-icon matSuffix>face</mat-icon>
-                  <mat-error *ngIf="register.get('firstName').hasError('required') && register.get('firstName').touched">
+                  <mat-error
+                    *ngIf="register.get('firstName').hasError('required') && register.get('firstName').touched">
                     First name is required
                   </mat-error>
                 </mat-form-field>
@@ -49,10 +50,10 @@
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field>
-                  <input matInput placeholder="Years of experience" formControlName="yearsOfExperience">
+                  <input matInput placeholder="Years of exp." formControlName="yearsOfExperience">
                   <mat-icon matSuffix>history</mat-icon>
                   <mat-error *ngIf="register.get('yearsOfExperience').hasError('maxlength')">
-                    Invalid experience
+                    Invalid years of exp.
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -61,12 +62,15 @@
               <div fxLayout="row" fxLayoutGap="10px">
                 <button type="button" mat-button (click)="addField()">Add social profile</button>
               </div>
-              <div formArrayName="socialProfiles" fxLayout="row" fxLayoutGap="40px" fxLayoutWrap>
+              <div formArrayName="socialProfiles">
                 <div *ngFor="let url of socialFields.controls; let i=index" [formGroupName]="i">
-                  <mat-form-field>
-                    <input matInput placeholder="URL" formControlName="url">
-                    <mat-icon matSuffix>link</mat-icon>
-                  </mat-form-field>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <mat-form-field>
+                      <input matInput placeholder="URL" formControlName="url">
+                      <mat-icon matSuffix>link</mat-icon>
+                    </mat-form-field>
+                  </div>
+
                 </div>
               </div>
             </div>
