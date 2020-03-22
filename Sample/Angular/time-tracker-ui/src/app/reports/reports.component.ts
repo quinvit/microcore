@@ -17,10 +17,16 @@ export interface DailyTimeSheetByUser {
 })
 export class ReportsComponent implements OnInit {
 
+  thisMonthVisible: boolean = false;
+
   displayedColumns: string[] = ['description', 'totalMinutes', 'dayInMonth'];
   dataSource = [];
 
   constructor(private http: HttpClient, private _notificationService: NotificationService) { }
+
+  toggleThisMonth(){
+    this.thisMonthVisible = !this.thisMonthVisible;
+  }
 
   ngOnInit() {
     this.query();

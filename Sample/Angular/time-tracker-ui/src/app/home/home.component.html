@@ -1,6 +1,16 @@
 <div [style.padding.px]="10" class="center">
-  <div style="font-family: monospace;">
-    <span *ngIf="!authenticated">📧 You could register an account <a [routerLink]="['/register']">here</a> and try the simple time tracker app.</span>
-    Feel free to improve the <a href="https://github.com/quinvit/microcore" target="blank">framework</a> or <a target="blank" href="https://www.buymeacoffee.com/RulNiU5"> buy me a coffee </a> ☕. Thank you.
+  <div>
+    <span *ngIf="!authenticated">Quick <a [routerLink]="['/register']">sign up</a> for an account and try keyin your
+      time spent.<br><br></span>
+    Coming soon features:
+    <ul>
+      <li>Manager role and performance report</li>
+      <li>Ticket system integration</li>
+    </ul>
+    Feel free to <a href="https://github.com/quinvit/microcore" target="blank">suggest</a> more features or <a
+      target="blank" href="https://www.buymeacoffee.com/RulNiU5">buy me a coffee</a>.
+    <br>
+    <br>
+    ☕ Thank you.
   </div>
 </div>

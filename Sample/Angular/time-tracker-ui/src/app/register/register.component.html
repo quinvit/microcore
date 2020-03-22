@@ -1,13 +1,21 @@
 <div [style.padding.px]="10">
-  <h2 class="mat-h2"> Sign up</h2>
+
   <mat-card class="mat-elevation-z8">
+    <h2 class="mat-h2"> Sign up</h2>
+    <span>
+      We do not store your information for any purpose.
+      You could fake all fields but your email is needed for account activation.
+      <br>
+    </span>
+    <br>
     <mat-card-content class="container">
+
       <form class="register-form" [formGroup]="register" (ngSubmit)="onRegister()">
         <!-- fxLayout="row" fxLayoutGap="20px" -->
         <div>
           <div fxLayout="column">
-            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
-              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="center" class="row">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
                 <mat-form-field>
                   <input matInput placeholder="First name" formControlName="firstName">
                   <mat-icon matSuffix>face</mat-icon>
@@ -26,7 +34,7 @@
               </div>
             </div>
             <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
-              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start center">
                 <mat-form-field>
                   <input matInput placeholder="Email" formControlName="email">
                   <mat-icon matSuffix>email</mat-icon>
@@ -40,8 +48,8 @@
                 </mat-form-field>
               </div>
             </div>
-            <div fxLayout="column" fxLayoutGap="40px" fxLayoutAlign="center stretch" class="row">
-              <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start">
+            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+              <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start">
                 <mat-form-field>
                   <input matInput placeholder="Job title" formControlName="jobTitle">
                   <mat-icon matSuffix>group</mat-icon>

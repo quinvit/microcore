@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
+*, .mat-h2 {
+  font-family: monospace;
+}
 .mat-card {
   border-radius: 0px !important;
 }
 .center {
   display: flex;
   justify-content: center;
+}
+.mat-toolbar.mat-primary {
+  background: #ff813f;
+  color: #fff;
 }
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
