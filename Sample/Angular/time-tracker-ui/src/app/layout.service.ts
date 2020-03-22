@@ -14,5 +14,9 @@ export class LayoutService {
     this.sidenavWidth = 0;
   }
 
+  scrollToSection(section){
+    location.hash = '#' + section;
+  }
+
   constructor() { }
 }

@@ -7,6 +7,7 @@ using ReportService.Interface;
 using ReportService.Interface.Models;
 using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,6 +26,52 @@ namespace ReportService
         {
             _configuration = configuration;
             _authService = authService;
+        }
+
+        private string NumberToUnicodeChars(int number)
+        {
+            var chars = number.ToString().ToCharArray();
+            List<char> unicodeChars = new List<char>();
+            foreach (var c in chars)
+            {
+                switch (c)
+                {
+                    case '0':
+                        unicodeChars.Add('⓿');
+                        break;
+                    case '1':
+                        unicodeChars.Add('❶');
+                        break;
+                    case '2':
+                        unicodeChars.Add('❷');
+                        break;
+                    case '3':
+                        unicodeChars.Add('❸');
+                        break;
+                    case '4':
+                        unicodeChars.Add('❹');
+                        break;
+                    case '5':
+                        unicodeChars.Add('❺');
+                        break;
+                    case '6':
+                        unicodeChars.Add('❻');
+                        break;
+                    case '7':
+                        unicodeChars.Add('❼');
+                        break;
+                    case '8':
+                        unicodeChars.Add('❽');
+                        break;
+                    case '9':
+                        unicodeChars.Add('❾');
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            return string.Concat(unicodeChars);
         }
 
         public async Task<DailyTimeByUser[]> GetMonthlyReportByUserAsync(string token, int year)
@@ -72,7 +119,7 @@ namespace ReportService
                 .GroupBy(x => $"{x.RecordedTime?.Month}-{x.RecordedTime?.Day}")
                 .Select(g => new DailyTimeByUser
                 {
-                    Description = string.Join(" | ", g.Select(x => x.Description)),
+                    Description = string.Join(" | ", g.Select(x => x.Description + " " + NumberToUnicodeChars(x.TotalMinutes))),
                     TotalMinutes = g.Sum(r => r.TotalMinutes),
                     DayInMonth = g.First().RecordedTime.Value.Day,
                     MonthInYear = g.First().RecordedTime.Value.Month

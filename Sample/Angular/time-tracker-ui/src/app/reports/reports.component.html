@@ -1,12 +1,12 @@
 <keyin></keyin>
 <br>
 <div [style.padding.px]="10">
-  <h2 (click)="toggleThisMonth()" class="mat-h2">📆 This month
+  <h2 id="thisMonthSection" (click)="toggleThisMonth()" class="mat-h2">📆 This month
     <span *ngIf="!thisMonthVisible">+</span>
     <span href="#" *ngIf="thisMonthVisible">-</span>
   </h2>
 
-  <table [hidden]="thisMonthVisible" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table [hidden]="!thisMonthVisible" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
                 The actual rendered columns are set as a property on the row definition" -->
 
