@@ -109,8 +109,7 @@ Here is how it works:
 
 ![Console Windows](console_demo.png)
 
-
-After register, activate your account and login, click on Timesheet menu to retrieve data from server. Here is the data flow:
+Here is the data flow:
 
 - -> Angular application
 
@@ -140,4 +139,4 @@ For the angular dist, we simply put all output files of ***ng build --prod*** re
 
 ![Sample](sample.png)
 
-Try final result [here](https://timetracker2.z7.web.core.windows.net/)
+Try final result [here](https://timetracker2.z7.web.core.windows.net/) with this username/password quinvit@hyperscale2.onmicrosoft.com/microcore@911 as default account.

@@ -28,51 +28,9 @@ namespace ReportService
             _authService = authService;
         }
 
-        private string NumberToUnicodeChars(int number)
+        private string FormatDuration(int number)
         {
-            var chars = number.ToString().ToCharArray();
-            List<char> unicodeChars = new List<char>();
-            // ⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨
-            foreach (var c in chars)
-            {
-                switch (c)
-                {
-                    case '0':
-                        unicodeChars.Add('⓪');
-                        break;
-                    case '1':
-                        unicodeChars.Add('①');
-                        break;
-                    case '2':
-                        unicodeChars.Add('②');
-                        break;
-                    case '3':
-                        unicodeChars.Add('③');
-                        break;
-                    case '4':
-                        unicodeChars.Add('④');
-                        break;
-                    case '5':
-                        unicodeChars.Add('⑤');
-                        break;
-                    case '6':
-                        unicodeChars.Add('⑥');
-                        break;
-                    case '7':
-                        unicodeChars.Add('⑦');
-                        break;
-                    case '8':
-                        unicodeChars.Add('⑧');
-                        break;
-                    case '9':
-                        unicodeChars.Add('⑨');
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            return string.Concat(unicodeChars);
+            return string.Concat("[", number.ToString(), "]");
         }
 
         public async Task<DailyTimeByUser[]> GetMonthlyReportByUserAsync(string token, int year)
@@ -120,7 +78,7 @@ namespace ReportService
                 .GroupBy(x => $"{x.RecordedTime?.Month}-{x.RecordedTime?.Day}")
                 .Select(g => new DailyTimeByUser
                 {
-                    Description = string.Join(" | ", g.Select(x => x.Description + " " + NumberToUnicodeChars(x.TotalMinutes))),
+                    Description = string.Join(" | ", g.Select(x => x.Description + " " + FormatDuration(x.TotalMinutes))),
                     TotalMinutes = g.Sum(r => r.TotalMinutes),
                     DayInMonth = g.First().RecordedTime.Value.Day,
                     MonthInYear = g.First().RecordedTime.Value.Month
