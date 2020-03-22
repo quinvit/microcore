@@ -139,4 +139,4 @@ For the angular dist, we simply put all output files of ***ng build --prod*** re
 
 ![Sample](sample.png)
 
-Try with this username/password ```quinvit@hyperscale2.onmicrosoft.com```/```microcore@911``` as default account <a href="ttps://timetracker2.z7.web.core.windows.net" target="_blank">here</a>.
+Try with this username/password ```quinvit@hyperscale2.onmicrosoft.com```/```microcore@911``` as default account <a href="https://timetracker2.z7.web.core.windows.net" target="_blank">here</a>.
