@@ -32,39 +32,40 @@ namespace ReportService
         {
             var chars = number.ToString().ToCharArray();
             List<char> unicodeChars = new List<char>();
+            // ⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨
             foreach (var c in chars)
             {
                 switch (c)
                 {
                     case '0':
-                        unicodeChars.Add('⓿');
+                        unicodeChars.Add('⓪');
                         break;
                     case '1':
-                        unicodeChars.Add('❶');
+                        unicodeChars.Add('①');
                         break;
                     case '2':
-                        unicodeChars.Add('❷');
+                        unicodeChars.Add('②');
                         break;
                     case '3':
-                        unicodeChars.Add('❸');
+                        unicodeChars.Add('③');
                         break;
                     case '4':
-                        unicodeChars.Add('❹');
+                        unicodeChars.Add('④');
                         break;
                     case '5':
-                        unicodeChars.Add('❺');
+                        unicodeChars.Add('⑤');
                         break;
                     case '6':
-                        unicodeChars.Add('❻');
+                        unicodeChars.Add('⑥');
                         break;
                     case '7':
-                        unicodeChars.Add('❼');
+                        unicodeChars.Add('⑦');
                         break;
                     case '8':
-                        unicodeChars.Add('❽');
+                        unicodeChars.Add('⑧');
                         break;
                     case '9':
-                        unicodeChars.Add('❾');
+                        unicodeChars.Add('⑨');
                         break;
                     default:
                         break;
