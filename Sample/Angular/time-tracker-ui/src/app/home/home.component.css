@@ -2,7 +2,3 @@ p {
     line-height: 25px;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-}

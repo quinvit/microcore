@@ -31,19 +31,19 @@ export class SideNavComponent {
         this.items = [
             {
                 title: 'Timesheet',
-                icon: 'history',
+                icon: 'assignment',
                 route: 'reports',
                 requiredAuthenticated: true
             },
             {
-                title: 'Register',
+                title: 'Sign up',
                 icon: 'person_add',
                 route: 'register',
                 requiredAuthenticated: false
             },
             {
                 title: 'About me',
-                icon: 'sentiment_satisfied_alt',
+                icon: 'contact_support',
                 route: 'home',
                 requiredAuthenticated: true
             }

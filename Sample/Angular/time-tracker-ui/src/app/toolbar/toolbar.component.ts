@@ -34,7 +34,6 @@ export class ToolbarComponent implements OnInit {
 
   login() {
       this.storage.set('afterLoginUrl', '/reports');
-      this.router.navigateByUrl('/');
       this._adalService.login();
   }
 

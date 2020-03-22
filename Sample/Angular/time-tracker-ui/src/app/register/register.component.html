@@ -1,6 +1,6 @@
 <div [style.padding.px]="10">
-  <h2 class="mat-h2">🙋 Register</h2>
-  <mat-card>
+  <h2 class="mat-h2"> Sign up</h2>
+  <mat-card class="mat-elevation-z8">
     <mat-card-content class="container">
       <form class="register-form" [formGroup]="register" (ngSubmit)="onRegister()">
         <!-- fxLayout="row" fxLayoutGap="20px" -->
@@ -36,7 +36,7 @@
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Company" formControlName="company">
-                  <mat-icon matSuffix>work</mat-icon>
+                  <mat-icon matSuffix>location_city</mat-icon>
                 </mat-form-field>
               </div>
             </div>
@@ -44,14 +44,14 @@
               <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start">
                 <mat-form-field>
                   <input matInput placeholder="Job title" formControlName="jobTitle">
-                  <mat-icon matSuffix>emoji_people</mat-icon>
+                  <mat-icon matSuffix>group</mat-icon>
                   <mat-error *ngIf="register.get('jobTitle').hasError('jobTitle') && register.get('jobTitle').touched">
                     Please enter your job title
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field>
                   <input matInput placeholder="Years of exp." formControlName="yearsOfExperience">
-                  <mat-icon matSuffix>history</mat-icon>
+                  <mat-icon matSuffix>star_half</mat-icon>
                   <mat-error *ngIf="register.get('yearsOfExperience').hasError('maxlength')">
                     Invalid years of exp.
                   </mat-error>
@@ -60,8 +60,11 @@
             </div>
             <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
               <div fxLayout="row" fxLayoutGap="10px">
-                <button type="button" mat-button (click)="addField()">Add social profile</button>
+                <button type="button" mat-raised-button (click)="addField()">
+                  Add social profile
+                </button>
               </div>
+              <br>
               <div formArrayName="socialProfiles">
                 <div *ngFor="let url of socialFields.controls; let i=index" [formGroupName]="i">
                   <div fxLayout="row" fxLayoutGap="10px">
@@ -75,9 +78,13 @@
               </div>
             </div>
             <div class="row">
-              <button [disabled]="!register.valid" mat-raised-button color="primary">Register</button>
+              <button [disabled]="!register.valid" mat-raised-button color="primary">
+                Sign up
+              </button>
               &nbsp;
-              <button type="button" mat-button>Cancel</button>
+              <button (click)="goTo('home')" type="button" mat-raised-button>
+                Cancel
+              </button>
             </div>
           </div>
 

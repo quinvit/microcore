@@ -4,6 +4,8 @@ import { HttpClient, HttpBackend } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { AdalService } from 'adal-angular4';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,12 @@ import { environment } from 'src/environments/environment';
 export class RegisterComponent implements OnInit {
   register: FormGroup;
   http: HttpClient
-  constructor(private _snackBar: MatSnackBar, private fb: FormBuilder, handler: HttpBackend) {
+  constructor(
+    private router: Router,
+    private _adalService: AdalService,
+    private _snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    handler: HttpBackend) {
     this.http = new HttpClient(handler);
     this.initForm();
   }
@@ -64,7 +71,14 @@ export class RegisterComponent implements OnInit {
       });
   }
 
+  goTo(route: string) {
+      this.router.navigate([route]);
+  }
+
   ngOnInit() {
+    if(this._adalService.userInfo.authenticated) {
+      this.goTo('reports');
+    }
   }
 
 }

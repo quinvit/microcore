@@ -6,18 +6,18 @@
     </button>
   </span>
 
-  <span *ngIf="authenticated"> ✅ <strong> {{userInfo.profile.given_name}}
+  <span *ngIf="authenticated"> <strong> {{userInfo.profile.given_name}}
       {{userInfo.profile.family_name}}</strong></span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="fill-remaining-space"></span>
   <span *ngIf="!authenticated">
     <button mat-icon-button fxHide fxShow.lt-sm (click)="login()">
-      <mat-icon>account_box</mat-icon>
+      <mat-icon>account_circle</mat-icon>
     </button>
 
     <button mat-raised-button fxHide.lt-sm (click)="login()">
-      <mat-icon>account_box</mat-icon> Login
+      <mat-icon>account_circle</mat-icon> Login
     </button>
   </span>
 

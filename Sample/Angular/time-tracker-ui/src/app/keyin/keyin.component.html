@@ -1,6 +1,6 @@
 <div [style.padding.px]="10">
     <h2 class="mat-h2">📝 Today </h2>
-    <mat-card>
+    <mat-card class="mat-elevation-z8">
         <mat-card-content class="container">
             <form class="keyin-form" [formGroup]="keyin" (ngSubmit)="onSubmit()">
                 <!-- fxLayout="row" fxLayoutGap="20px" -->
@@ -28,13 +28,11 @@
                         </div>
 
                     </div>
-                    <button type="button" mat-button (click)="addTimeRecords()">
-                        <mat-icon> note_add </mat-icon>
-                        New
+                    <button type="button" mat-raised-button (click)="addTimeRecords()">
+                        New record
                     </button>
-
-                    <button type="submit" mat-button>
-                        <mat-icon> cloud_upload </mat-icon>
+                    &nbsp;
+                    <button type="submit" mat-raised-button>
                         Submit
                     </button>
                 </div>
